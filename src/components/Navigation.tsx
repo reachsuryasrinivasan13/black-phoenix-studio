@@ -10,7 +10,7 @@ const Navigation = () => {
   const menuItems = [
     { name: "Home", href: "/" },
     { name: "About", href: "/about" },
-    { name: "Portfolio", href: "/portfolio" },
+    { name: "Photography", href: "/portfolio" },
     { name: "Films", href: "/films" },
     { name: "Contact", href: "/contact" },
   ];

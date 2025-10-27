@@ -1,7 +1,7 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import Contact from "@/components/Contact";
-import contactBanner from "@/assets/contact-banner.jpg";
+import contactBanner from "@/assets/contact-banner-new.jpg";
 
 const ContactPage = () => {
   return (
