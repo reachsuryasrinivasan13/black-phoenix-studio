@@ -1,24 +1,24 @@
 import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Instagram, Facebook, Twitter } from "lucide-react";
 import { Button } from "./ui/button";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
 
   const menuItems = [
-    { name: "Home", href: "#home" },
-    { name: "Portfolio", href: "#portfolio" },
-    { name: "Films", href: "#films" },
-    { name: "About", href: "#about" },
-    { name: "Contact", href: "#contact" },
+    { name: "Home", href: "/" },
+    { name: "About", href: "/about" },
+    { name: "Portfolio", href: "/portfolio" },
+    { name: "Films", href: "/films" },
+    { name: "Contact", href: "/contact" },
   ];
 
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-      setIsOpen(false);
-    }
+  const isActive = (href: string) => {
+    if (href === "/" && location.pathname === "/") return true;
+    if (href !== "/" && location.pathname.startsWith(href)) return true;
+    return false;
   };
 
   return (
@@ -26,23 +26,27 @@ const Navigation = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
-          <button
-            onClick={() => scrollToSection("#home")}
+          <Link
+            to="/"
             className="font-playfair text-2xl md:text-3xl font-bold text-primary transition-colors hover:text-primary/80"
           >
             BPP
-          </button>
+          </Link>
 
           {/* Desktop Menu */}
           <div className="hidden lg:flex items-center space-x-8">
             {menuItems.map((item) => (
-              <button
+              <Link
                 key={item.name}
-                onClick={() => scrollToSection(item.href)}
-                className="text-sm uppercase tracking-wider text-foreground hover:text-primary transition-colors"
+                to={item.href}
+                className={`text-sm uppercase tracking-wider transition-colors ${
+                  isActive(item.href)
+                    ? "text-primary font-semibold"
+                    : "text-foreground hover:text-primary"
+                }`}
               >
                 {item.name}
-              </button>
+              </Link>
             ))}
           </div>
 
@@ -72,12 +76,11 @@ const Navigation = () => {
             >
               <Twitter className="h-5 w-5" />
             </a>
-            <Button
-              onClick={() => scrollToSection("#contact")}
-              className="ml-4 bg-primary text-primary-foreground hover:bg-primary/90"
-            >
-              Get In Touch
-            </Button>
+            <Link to="/contact">
+              <Button className="ml-4 bg-primary text-primary-foreground hover:bg-primary/90">
+                Get In Touch
+              </Button>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -93,13 +96,18 @@ const Navigation = () => {
         {isOpen && (
           <div className="lg:hidden py-4 space-y-4 border-t border-border">
             {menuItems.map((item) => (
-              <button
+              <Link
                 key={item.name}
-                onClick={() => scrollToSection(item.href)}
-                className="block w-full text-left text-sm uppercase tracking-wider text-foreground hover:text-primary transition-colors py-2"
+                to={item.href}
+                onClick={() => setIsOpen(false)}
+                className={`block w-full text-left text-sm uppercase tracking-wider transition-colors py-2 ${
+                  isActive(item.href)
+                    ? "text-primary font-semibold"
+                    : "text-foreground hover:text-primary"
+                }`}
               >
                 {item.name}
-              </button>
+              </Link>
             ))}
             <div className="flex items-center space-x-4 pt-4">
               <a
@@ -127,12 +135,11 @@ const Navigation = () => {
                 <Twitter className="h-5 w-5" />
               </a>
             </div>
-            <Button
-              onClick={() => scrollToSection("#contact")}
-              className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
-            >
-              Get In Touch
-            </Button>
+            <Link to="/contact" onClick={() => setIsOpen(false)}>
+              <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
+                Get In Touch
+              </Button>
+            </Link>
           </div>
         )}
       </div>
