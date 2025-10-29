@@ -1,5 +1,5 @@
 import { useParams, Link } from "react-router-dom";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, ChevronLeft, ChevronRight } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Badge } from "@/components/ui/badge";
@@ -165,7 +165,7 @@ const PortfolioDetailPage = () => {
 
       {/* Header Section */}
       <section className="pt-32 pb-12 bg-secondary">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto px-8 sm:px-16 lg:px-24">
           <Link 
             to="/portfolio" 
             className="inline-flex items-center text-muted-foreground hover:text-primary transition-colors mb-8"
@@ -174,7 +174,7 @@ const PortfolioDetailPage = () => {
             Back to Portfolio
           </Link>
           
-          <div className="max-w-4xl mx-auto text-center">
+          <div className="text-center">
             <Badge variant="secondary" className="mb-4">{portfolio.category}</Badge>
             <h1 className="font-playfair text-5xl sm:text-6xl md:text-7xl font-bold text-foreground mb-6">
               {portfolio.title}
@@ -193,8 +193,8 @@ const PortfolioDetailPage = () => {
 
       {/* Details Section */}
       <section className="py-12 bg-background">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-2xl mx-auto text-center space-y-2">
+        <div className="max-w-4xl mx-auto px-8 sm:px-16 lg:px-24">
+          <div className="text-center space-y-2">
             {portfolio.details.map((detail: string, index: number) => (
               <p key={index} className="text-muted-foreground">
                 {detail}
@@ -206,8 +206,8 @@ const PortfolioDetailPage = () => {
 
       {/* Images Grid */}
       <section className="py-12 bg-background">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-7xl mx-auto">
+        <div className="max-w-4xl mx-auto px-8 sm:px-16 lg:px-24">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {allImages.map((image, index) => (
               <div key={index} className="aspect-[4/5] overflow-hidden rounded-lg">
                 <img
@@ -223,11 +223,11 @@ const PortfolioDetailPage = () => {
 
       {/* Videos Section */}
       <section className="py-20 bg-secondary">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto px-8 sm:px-16 lg:px-24">
           <h2 className="font-playfair text-4xl sm:text-5xl font-bold text-center text-foreground mb-12">
             Featured Videos
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {portfolio.videos.map((video: any, index: number) => (
               <div key={index} className="group cursor-pointer">
                 <div className="relative aspect-video overflow-hidden rounded-lg mb-4">
@@ -247,6 +247,28 @@ const PortfolioDetailPage = () => {
                 </h3>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Navigation Section */}
+      <section className="py-8 bg-secondary border-t border-border">
+        <div className="max-w-6xl mx-auto px-8 sm:px-16 lg:px-24">
+          <div className="flex items-center justify-between">
+            <Link 
+              to="/portfolio/fashion-editorial"
+              className="flex items-center gap-2 text-foreground hover:text-primary transition-colors group"
+            >
+              <ChevronLeft className="h-5 w-5 group-hover:-translate-x-1 transition-transform" />
+              <span className="font-playfair text-xl">Reva & Zach</span>
+            </Link>
+            <Link 
+              to="/portfolio/meera-arjun"
+              className="flex items-center gap-2 text-foreground hover:text-primary transition-colors group"
+            >
+              <span className="font-playfair text-xl">Alia & Ranbir, Mumbai</span>
+              <ChevronRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+            </Link>
           </div>
         </div>
       </section>

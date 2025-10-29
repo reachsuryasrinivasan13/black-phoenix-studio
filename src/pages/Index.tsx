@@ -3,7 +3,7 @@ import Footer from "@/components/Footer";
 import { Link } from "react-router-dom";
 import heroImage from "@/assets/home-hero-banner.jpg";
 import modernApproach from "@/assets/modern-approach.jpg";
-import filmsBanner from "@/assets/films-banner.jpg";
+import filmsHeroVideo from "@/assets/films-hero-video.jpg";
 import portfolio1 from "@/assets/portfolio-1.jpg";
 import portfolio2 from "@/assets/portfolio-2.jpg";
 import portfolio3 from "@/assets/portfolio-3.jpg";
@@ -55,16 +55,30 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Modern Approach Section - Overlapping Style */}
+      {/* Modern Approach Section - Side by Side with Center Content Overlap */}
       <section className="py-20 sm:py-32 bg-background relative">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 items-center max-w-7xl mx-auto">
-            <div className="relative z-10 bg-background p-8 sm:p-12 lg:p-16 lg:-mr-16">
-              <h2 className="font-playfair text-4xl sm:text-5xl md:text-6xl font-bold text-foreground mb-8">
-                A Modern Approach
-                <span className="block text-3xl sm:text-4xl md:text-5xl font-light italic mt-2">to an</span>
-                <span className="block text-3xl sm:text-4xl md:text-5xl">Age Old Tradition</span>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 items-start max-w-7xl mx-auto">
+            {/* Left Image */}
+            <div className="lg:col-span-4 relative aspect-[3/4] overflow-hidden">
+              <img
+                src={modernApproach}
+                alt="Modern photography approach - left"
+                className="h-full w-full object-cover"
+              />
+            </div>
+            
+            {/* Center Content - Overlapping */}
+            <div className="lg:col-span-4 relative z-10 bg-background p-8 sm:p-12 lg:p-16 flex flex-col justify-center">
+              <h2 className="font-playfair text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-2">
+                A MODERN APPROACH
               </h2>
+              <p className="font-playfair text-2xl sm:text-3xl md:text-4xl font-light italic text-foreground mb-6">
+                to an
+              </p>
+              <h3 className="font-playfair text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-8">
+                AGE OLD TRADITION
+              </h3>
               <div className="space-y-4 text-muted-foreground text-base leading-relaxed">
                 <p>
                   Considered to be the epitome of Modern Photography and Filmmaking, HOTC has transformed the Indian Wedding landscape on a regular basis. For almost a decade House On The Clouds has been creating photographs and films which are timeless and have been etched in memories of thousands of people forever.
@@ -74,10 +88,12 @@ const Index = () => {
                 </p>
               </div>
             </div>
-            <div className="relative aspect-[4/5] overflow-hidden">
+            
+            {/* Right Image */}
+            <div className="lg:col-span-4 relative aspect-[3/4] overflow-hidden">
               <img
                 src={modernApproach}
-                alt="Modern photography approach"
+                alt="Modern photography approach - right"
                 className="h-full w-full object-cover"
               />
             </div>
@@ -134,6 +150,68 @@ const Index = () => {
             >
               Photography Blog
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Films Section with Auto-playing Video Banner and 2x2 Video Grid */}
+      <section className="py-20 sm:py-32 bg-background">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Video Banner Section with "Inspired by Cinema" */}
+          <div className="relative h-screen min-h-[600px] overflow-hidden mb-16">
+            <img
+              src={filmsHeroVideo}
+              alt="Films cinematic video"
+              className="h-full w-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/40 to-background/80 flex items-center justify-start px-8 sm:px-16 lg:px-24">
+              <h2 className="font-playfair text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-light italic text-white">
+                Inspired by Cinema.
+              </h2>
+            </div>
+          </div>
+
+          {/* Content Text */}
+          <div className="max-w-4xl mx-auto text-center mb-16 px-4">
+            <p className="text-muted-foreground text-lg leading-relaxed">
+              We at HOTC celebrate the wild ones, the rule breakers, the travellers, the new age modern couple who are not afraid to experiment. We believe the ultimate goal of a wedding photographer is to justify the vibe of the wedding and the personalities of the couple. And this approach has helped us experience weddings in a two bedroom apartments to weddings spread over 2 continents.
+            </p>
+            <p className="text-muted-foreground text-lg leading-relaxed mt-6">
+              Here are some selected weddings from past couple of years to showcase the union of two people in the most authentic way possible.
+            </p>
+          </div>
+
+          {/* 2x2 Video Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-6xl mx-auto">
+            {[
+              { id: "film-1", title: "Alisha & Rahul", location: "Amalfi Coast, Italy", image: portfolio1 },
+              { id: "film-2", title: "Saloni & SO", location: "Bangkok", image: portfolio2 },
+              { id: "film-3", title: "Zinzan", location: "New Zealand", image: portfolio3 },
+              { id: "film-4", title: "Reva & Zach", location: "Udaipur", image: portfolio4 },
+            ].map((film) => (
+              <Link
+                key={film.id}
+                to={`/films/${film.id}`}
+                className="group"
+              >
+                <div className="relative aspect-video overflow-hidden mb-4 bg-muted">
+                  <img
+                    src={film.image}
+                    alt={film.title}
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="w-16 h-16 rounded-full bg-white/20 flex items-center justify-center backdrop-blur-sm">
+                      <Play className="h-8 w-8 text-white ml-1" fill="currentColor" />
+                    </div>
+                  </div>
+                </div>
+                <h3 className="font-playfair text-2xl font-semibold text-foreground mb-1">
+                  {film.title}
+                </h3>
+                <p className="text-muted-foreground">{film.location}</p>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
