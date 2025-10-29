@@ -3,25 +3,40 @@ import Footer from "@/components/Footer";
 import { Link } from "react-router-dom";
 import heroImage from "@/assets/home-hero-banner.jpg";
 import modernApproach from "@/assets/modern-approach.jpg";
+import filmsBanner from "@/assets/films-banner.jpg";
 import portfolio1 from "@/assets/portfolio-1.jpg";
 import portfolio2 from "@/assets/portfolio-2.jpg";
 import portfolio3 from "@/assets/portfolio-3.jpg";
 import portfolio4 from "@/assets/portfolio-4.jpg";
-import portfolio5 from "@/assets/portfolio-5.jpg";
-import portfolio6 from "@/assets/portfolio-6.jpg";
+import iconic1 from "@/assets/iconic-1.jpg";
+import iconic2 from "@/assets/iconic-2.jpg";
+import iconic3 from "@/assets/iconic-3.jpg";
+import iconic4 from "@/assets/iconic-4.jpg";
+import iconic5 from "@/assets/iconic-5.jpg";
+import iconic6 from "@/assets/iconic-6.jpg";
+import iconic7 from "@/assets/iconic-7.jpg";
+import iconic8 from "@/assets/iconic-8.jpg";
+import iconic9 from "@/assets/iconic-9.jpg";
+import iconic10 from "@/assets/iconic-10.jpg";
+import iconic11 from "@/assets/iconic-11.jpg";
+import iconic12 from "@/assets/iconic-12.jpg";
+import iconic13 from "@/assets/iconic-13.jpg";
+import iconic14 from "@/assets/iconic-14.jpg";
+import iconic15 from "@/assets/iconic-15.jpg";
+import { Play } from "lucide-react";
 
 const Index = () => {
-  const collageImages = [
-    portfolio1, portfolio2, portfolio3, portfolio4, portfolio5,
-    portfolio6, portfolio1, portfolio2, portfolio3, portfolio4,
-    portfolio5, portfolio6, portfolio1, portfolio2, portfolio3
+  const iconicImages = [
+    iconic1, iconic2, iconic3, iconic4, iconic5,
+    iconic6, iconic7, iconic8, iconic9, iconic10,
+    iconic11, iconic12, iconic13, iconic14, iconic15
   ];
 
   const featuredPortfolios = [
-    { id: "priya-rahul", image: portfolio1, title: "Priya & Rahul", category: "Indian" },
+    { id: "priya-rahul", image: portfolio1, title: "Reva & Zach", category: "International" },
     { id: "sara-john", image: portfolio2, title: "Sara & John", category: "International" },
-    { id: "meera-arjun", image: portfolio3, title: "Meera & Arjun", category: "Indian" },
-    { id: "brand-campaign", image: portfolio4, title: "Brand Campaign", category: "Commercial" },
+    { id: "meera-arjun", image: portfolio3, title: "Alia & Ranbir", category: "Indian" },
+    { id: "brand-campaign", image: portfolio4, title: "Kiara & Siddharth", category: "Indian" },
   ];
 
   return (
@@ -40,24 +55,26 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Modern Approach Section */}
-      <section className="py-20 sm:py-32 bg-background">
+      {/* Modern Approach Section - Overlapping Style */}
+      <section className="py-20 sm:py-32 bg-background relative">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
-              <h2 className="font-playfair text-4xl sm:text-5xl md:text-6xl font-bold text-foreground">
-                Modern Approach
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 items-center max-w-7xl mx-auto">
+            <div className="relative z-10 bg-background p-8 sm:p-12 lg:p-16 lg:-mr-16">
+              <h2 className="font-playfair text-4xl sm:text-5xl md:text-6xl font-bold text-foreground mb-8">
+                A Modern Approach
+                <span className="block text-3xl sm:text-4xl md:text-5xl font-light italic mt-2">to an</span>
+                <span className="block text-3xl sm:text-4xl md:text-5xl">Age Old Tradition</span>
               </h2>
-              <div className="space-y-4 text-muted-foreground text-lg leading-relaxed">
+              <div className="space-y-4 text-muted-foreground text-base leading-relaxed">
                 <p>
-                  Considered to be the epitome of Modern Photography and Filmmaking, Black Phoenix has transformed the Indian Wedding landscape on a regular basis. For almost a decade Black Phoenix has been creating photographs and films which are timeless and have been etched in memories of thousands of people forever.
+                  Considered to be the epitome of Modern Photography and Filmmaking, HOTC has transformed the Indian Wedding landscape on a regular basis. For almost a decade House On The Clouds has been creating photographs and films which are timeless and have been etched in memories of thousands of people forever.
                 </p>
                 <p>
-                  Awarded as the Wedding Filmmaker of the year for multiple consecutive years along with numerous other awards, Black Phoenix is recognized for its award winning films and exceptional photography.
+                  Awarded as the Wedding Filmmaker of the year for four consecutive years at the Weddingsutra awards along with numerous other awards HOTC is the only company listed on IMDB for its award winning films.
                 </p>
               </div>
             </div>
-            <div className="relative aspect-square overflow-hidden rounded-lg">
+            <div className="relative aspect-[4/5] overflow-hidden">
               <img
                 src={modernApproach}
                 alt="Modern photography approach"
@@ -68,29 +85,24 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Image Collage Section - 5x3 Grid */}
-      <section className="py-20 bg-secondary">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2 sm:gap-4">
-            {collageImages.map((img, index) => (
-              <div key={index} className="aspect-square overflow-hidden">
-                <img
-                  src={img}
-                  alt={`Gallery ${index + 1}`}
-                  className="h-full w-full object-cover hover:scale-110 transition-transform duration-500"
-                />
-              </div>
-            ))}
-          </div>
+      {/* Some of the Most Iconic Images - 5x3 Grid with 1px gaps */}
+      <section className="py-0">
+        <div className="grid grid-cols-5 gap-[1px]">
+          {iconicImages.map((img, index) => (
+            <div key={index} className="aspect-square overflow-hidden">
+              <img
+                src={img}
+                alt={`Iconic moment ${index + 1}`}
+                className="h-full w-full object-cover hover:scale-110 transition-transform duration-700"
+              />
+            </div>
+          ))}
         </div>
       </section>
 
-      {/* Photography Section - 4x1 Layout */}
+      {/* Photography Section - 4x1 Layout (No Heading, No Border Radius) */}
       <section className="py-20 sm:py-32 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="font-playfair text-4xl sm:text-5xl md:text-6xl font-bold text-foreground text-center mb-12">
-            Photography
-          </h2>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
             {featuredPortfolios.map((portfolio) => (

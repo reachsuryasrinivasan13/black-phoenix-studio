@@ -106,35 +106,30 @@ const PortfolioPage = () => {
         </div>
       </section>
 
-      {/* Portfolio Grid */}
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-5xl mx-auto">
+      {/* Portfolio Grid - 4 Columns with White Background */}
+      <section className="py-20">
+        <div className="bg-card mx-4 sm:mx-8 lg:mx-16 p-8 sm:p-12 lg:p-16 rounded-lg">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
             {filteredItems.map((item) => (
               <Link
                 key={item.id}
                 to={`/portfolio/${item.id}`}
-                className="group bg-card rounded-lg overflow-hidden border border-border hover:shadow-lg transition-all duration-300"
+                className="group"
               >
-                <div className="relative aspect-[4/3] overflow-hidden">
+                <div className="relative aspect-[3/4] overflow-hidden rounded-lg mb-4">
                   <img
                     src={item.src}
                     alt={item.alt}
                     className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                 </div>
-                <div className="p-6 space-y-3">
-                  <h3 className="font-playfair text-2xl font-semibold text-foreground">
+                <div className="space-y-2">
+                  <h3 className="font-playfair text-xl font-semibold text-foreground">
                     {item.title}
                   </h3>
                   <p className="text-muted-foreground text-sm line-clamp-2">
                     {item.excerpt}
                   </p>
-                  <div className="pt-2">
-                    <span className="text-primary hover:text-accent transition-colors font-medium text-sm">
-                      Read More →
-                    </span>
-                  </div>
                 </div>
               </Link>
             ))}
