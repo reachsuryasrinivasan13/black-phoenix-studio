@@ -80,8 +80,8 @@ const FilmDetailPage = () => {
             <p className="text-muted-foreground text-xl">{film.location}</p>
           </div>
 
-          {/* Video Player - Full Width (no side padding) */}
-          <div className="relative aspect-video mb-12 overflow-hidden group cursor-pointer bg-muted">
+          {/* Video Player - Full Width */}
+          <div className="relative aspect-video mb-12 overflow-hidden group cursor-pointer bg-muted w-full">
             <div className="absolute inset-0 flex items-center justify-center z-10">
               <div className="w-20 h-20 rounded-full bg-primary/90 flex items-center justify-center group-hover:bg-primary transition-colors">
                 <Play className="h-10 w-10 text-primary-foreground ml-1" fill="currentColor" />

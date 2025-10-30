@@ -101,9 +101,9 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Some of the Most Iconic Images - 5x3 Grid with 1px gaps */}
-      <section className="py-0">
-        <div className="grid grid-cols-5 gap-[1px]">
+      {/* Some of the Most Iconic Images - 5x3 Grid with 2px gaps */}
+      <section className="py-0 px-[2px]">
+        <div className="grid grid-cols-5 gap-[2px]">
           {iconicImages.map((img, index) => (
             <div key={index} className="aspect-square overflow-hidden">
               <img
@@ -154,16 +154,20 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Films Section with Auto-playing Video Banner and 2x2 Video Grid */}
+      {/* Films Section with Video Banner and 2x2 Video Grid */}
       <section className="py-20 sm:py-32 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           {/* Video Banner Section with "Inspired by Cinema" */}
           <div className="relative h-screen min-h-[600px] overflow-hidden mb-16">
-            <img
-              src={filmsHeroVideo}
-              alt="Films cinematic video"
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
               className="h-full w-full object-cover"
-            />
+            >
+              <source src={filmsHeroVideo} type="video/mp4" />
+            </video>
             <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/40 to-background/80 flex items-center justify-start px-8 sm:px-16 lg:px-24">
               <h2 className="font-playfair text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-light italic text-white">
                 Inspired by Cinema.

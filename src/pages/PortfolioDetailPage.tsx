@@ -165,7 +165,7 @@ const PortfolioDetailPage = () => {
 
       {/* Header Section */}
       <section className="pt-32 pb-12 bg-secondary">
-        <div className="max-w-4xl mx-auto px-8 sm:px-16 lg:px-24">
+        <div className="max-w-3xl mx-auto px-8 sm:px-12 lg:px-16">
           <Link 
             to="/portfolio" 
             className="inline-flex items-center text-muted-foreground hover:text-primary transition-colors mb-8"
@@ -193,7 +193,7 @@ const PortfolioDetailPage = () => {
 
       {/* Details Section */}
       <section className="py-12 bg-background">
-        <div className="max-w-4xl mx-auto px-8 sm:px-16 lg:px-24">
+        <div className="max-w-3xl mx-auto px-8 sm:px-12 lg:px-16">
           <div className="text-center space-y-2">
             {portfolio.details.map((detail: string, index: number) => (
               <p key={index} className="text-muted-foreground">
@@ -204,47 +204,17 @@ const PortfolioDetailPage = () => {
         </div>
       </section>
 
-      {/* Images Grid */}
+      {/* Images Grid - Single Column */}
       <section className="py-12 bg-background">
-        <div className="max-w-4xl mx-auto px-8 sm:px-16 lg:px-24">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="max-w-3xl mx-auto px-8 sm:px-12 lg:px-16">
+          <div className="space-y-6">
             {allImages.map((image, index) => (
-              <div key={index} className="aspect-[4/5] overflow-hidden rounded-lg">
+              <div key={index} className="w-full overflow-hidden">
                 <img
                   src={image}
                   alt={`${portfolio.title} - Photo ${index + 1}`}
-                  className="h-full w-full object-cover hover:scale-105 transition-transform duration-500"
+                  className="w-full h-auto object-cover hover:scale-105 transition-transform duration-500"
                 />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Videos Section */}
-      <section className="py-20 bg-secondary">
-        <div className="max-w-6xl mx-auto px-8 sm:px-16 lg:px-24">
-          <h2 className="font-playfair text-4xl sm:text-5xl font-bold text-center text-foreground mb-12">
-            Featured Videos
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {portfolio.videos.map((video: any, index: number) => (
-              <div key={index} className="group cursor-pointer">
-                <div className="relative aspect-video overflow-hidden rounded-lg mb-4">
-                  <img
-                    src={video.thumbnail}
-                    alt={video.title}
-                    className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-background/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                    <div className="w-16 h-16 rounded-full bg-primary flex items-center justify-center">
-                      <div className="w-0 h-0 border-t-8 border-t-transparent border-l-12 border-l-primary-foreground border-b-8 border-b-transparent ml-1" />
-                    </div>
-                  </div>
-                </div>
-                <h3 className="font-playfair text-xl font-semibold text-foreground text-center">
-                  {video.title}
-                </h3>
               </div>
             ))}
           </div>
@@ -253,20 +223,20 @@ const PortfolioDetailPage = () => {
 
       {/* Navigation Section */}
       <section className="py-8 bg-secondary border-t border-border">
-        <div className="max-w-6xl mx-auto px-8 sm:px-16 lg:px-24">
+        <div className="max-w-6xl mx-auto px-8 sm:px-12 lg:px-16">
           <div className="flex items-center justify-between">
             <Link 
-              to="/portfolio/fashion-editorial"
+              to="/portfolio/brand-campaign"
               className="flex items-center gap-2 text-foreground hover:text-primary transition-colors group"
             >
               <ChevronLeft className="h-5 w-5 group-hover:-translate-x-1 transition-transform" />
-              <span className="font-playfair text-xl">Reva & Zach</span>
+              <span className="font-playfair text-xl">Kiara & Siddharth</span>
             </Link>
             <Link 
-              to="/portfolio/meera-arjun"
+              to="/portfolio/sara-john"
               className="flex items-center gap-2 text-foreground hover:text-primary transition-colors group"
             >
-              <span className="font-playfair text-xl">Alia & Ranbir, Mumbai</span>
+              <span className="font-playfair text-xl">Sara & John</span>
               <ChevronRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>

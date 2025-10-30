@@ -55,18 +55,19 @@ const FilmsPage = () => {
       {/* Hero Banner with Video */}
       <section className="relative pt-20">
         <div className="relative h-[70vh] min-h-[600px] overflow-hidden">
-          <img
-            src={filmsBanner}
-            alt="Wedding films banner"
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
             className="h-full w-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-background/40 to-background flex flex-col items-center justify-center text-center px-4">
-            <h1 className="font-playfair text-6xl sm:text-7xl md:text-8xl font-bold text-white mb-8">
-              SOUL CINEMA
+          >
+            <source src={filmsBanner} type="video/mp4" />
+          </video>
+          <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-background/40 to-background flex items-center justify-start px-8 sm:px-16 lg:px-24">
+            <h1 className="font-playfair text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-light italic text-white">
+              Inspired by Cinema.
             </h1>
-            <p className="text-white/90 text-xl max-w-2xl">
-              Every wedding is unique and so are our films. For past 8 years HOTC has set new benchmarks of storytelling within the niche and beyond.
-            </p>
           </div>
         </div>
       </section>
