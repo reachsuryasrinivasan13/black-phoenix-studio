@@ -1,8 +1,8 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import aboutBanner from "@/assets/about-banner.jpg";
-import sunilPhoto from "@/assets/sunil-photo.jpg";
-import narasimmanPhoto from "@/assets/narasimman-photo.jpg";
+import aboutBanner from "@/assets/banner/about-banner.jpg";
+import sunilPhoto from "@/assets/about/sunil-photo.jpg";
+import narasimmanPhoto from "@/assets/about/narasimman-photo.jpg";
 
 const AboutPage = () => {
   const team = [

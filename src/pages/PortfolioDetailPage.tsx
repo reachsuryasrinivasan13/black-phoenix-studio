@@ -3,18 +3,26 @@ import { ArrowLeft, ChevronLeft, ChevronRight } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Badge } from "@/components/ui/badge";
-import portfolio1 from "@/assets/portfolio-1.jpg";
-import portfolio2 from "@/assets/portfolio-2.jpg";
-import portfolio3 from "@/assets/portfolio-3.jpg";
-import portfolio4 from "@/assets/portfolio-4.jpg";
-import portfolio5 from "@/assets/portfolio-5.jpg";
-import portfolio6 from "@/assets/portfolio-6.jpg";
+import priya1 from "@/assets/portfolio/priyaAndRahul/image-1.jpg";
+import priya2 from "@/assets/portfolio/priyaAndRahul/image-2.jpg";
+import priya3 from "@/assets/portfolio/priyaAndRahul/image-3.jpg";
+import sara1 from "@/assets/portfolio/saraAndJohn/image-1.jpg";
+import sara2 from "@/assets/portfolio/saraAndJohn/image-2.jpg";
+import sara3 from "@/assets/portfolio/saraAndJohn/image-3.jpg";
+import alia1 from "@/assets/portfolio/aliaAndRanbir/image-1.jpg";
+import alia2 from "@/assets/portfolio/aliaAndRanbir/image-2.jpg";
+import kiara1 from "@/assets/portfolio/kiaraAndSiddharth/image-1.jpg";
+import kiara2 from "@/assets/portfolio/kiaraAndSiddharth/image-2.jpg";
+import deepika1 from "@/assets/portfolio/deepikaAndRanveer/image-1.jpg";
+import deepika2 from "@/assets/portfolio/deepikaAndRanveer/image-2.jpg";
+import priyanka1 from "@/assets/portfolio/priyankaAndNick/image-1.jpg";
+import priyanka2 from "@/assets/portfolio/priyankaAndNick/image-2.jpg";
 
 const PortfolioDetailPage = () => {
   const { id } = useParams();
 
   const portfolioData: Record<string, any> = {
-    "priya-rahul": {
+    "priyaAndRahul": {
       title: "Priya & Rahul",
       category: "Wedding",
       date: "December 2023",
@@ -27,15 +35,10 @@ const PortfolioDetailPage = () => {
         "Makeup: Namrata Soni",
         "Hair: Amit Thakur"
       ],
-      coverImage: portfolio1,
-      images: [portfolio1, portfolio2, portfolio3, portfolio4, portfolio5, portfolio6],
-      videos: [
-        { title: "Wedding Ceremony", thumbnail: portfolio1 },
-        { title: "Reception Highlights", thumbnail: portfolio3 },
-        { title: "Couple Portraits", thumbnail: portfolio2 }
-      ]
+      coverImage: priya1,
+      images: [priya1, priya2, priya3, priya1, priya2, priya3, priya1, priya2, priya3, priya1, priya2, priya3, priya1, priya2, priya3, priya1, priya2, priya3, priya1, priya2]
     },
-    "sara-john": {
+    "saraAndJohn": {
       title: "Sara & John",
       category: "Engagement",
       date: "October 2023",
@@ -47,95 +50,76 @@ const PortfolioDetailPage = () => {
         "Groom's Outfit: Raymond",
         "Styling: Beach Elegance"
       ],
-      coverImage: portfolio2,
-      images: [portfolio2, portfolio1, portfolio3, portfolio4, portfolio5, portfolio6],
-      videos: [
-        { title: "Engagement Story", thumbnail: portfolio2 },
-        { title: "Beach Moments", thumbnail: portfolio1 },
-        { title: "Couple Journey", thumbnail: portfolio3 }
-      ]
+      coverImage: sara1,
+      images: [sara1, sara2, sara3, sara1, sara2, sara3, sara1, sara2, sara3, sara1, sara2, sara3, sara1, sara2, sara3, sara1, sara2, sara3, sara1, sara2]
     },
-    "meera-arjun": {
-      title: "Meera & Arjun",
+    "aliaAndRanbir": {
+      title: "Alia & Ranbir",
       category: "Reception",
       date: "November 2023",
       location: "Mumbai, Maharashtra",
-      description: "An elegant reception filled with laughter, dance, and unforgettable moments as families came together in celebration of love and unity.",
+      description: "An unprecedented scoop of this generation decided to get married in the simplest possible way - in their balcony surrounded by only 30 of their closest friends and family members.",
       details: [
-        "Venue: Taj Lands End, Mumbai",
-        "Wedding Planned by: Weddings by Priyanka",
-        "Bride's Outfit: Tarun Tahiliani",
-        "Groom's Outfit: Raghavendra Rathore"
+        "Venue: Private Residence, Mumbai",
+        "Wedding Planned by: Intimate Affairs",
+        "Bride's Outfit: Sabyasachi",
+        "Groom's Outfit: Custom Designer"
       ],
-      coverImage: portfolio3,
-      images: [portfolio3, portfolio1, portfolio2, portfolio4, portfolio5, portfolio6],
-      videos: [
-        { title: "Reception Highlights", thumbnail: portfolio3 },
-        { title: "First Dance", thumbnail: portfolio1 },
-        { title: "Family Moments", thumbnail: portfolio2 }
-      ]
+      coverImage: alia1,
+      images: [alia1, alia2, alia1, alia2, alia1, alia2, alia1, alia2, alia1, alia2, alia1, alia2, alia1, alia2, alia1, alia2, alia1, alia2, alia1, alia2]
     },
-    "brand-campaign": {
-      title: "Brand Campaign",
-      category: "Commercial",
+    "kiaraAndSiddharth": {
+      title: "Kiara & Siddharth",
+      category: "Wedding",
       date: "September 2023",
       location: "Mumbai, Maharashtra",
       description: "Professional commercial photography showcasing products and brand identity with creative vision and attention to detail.",
       details: [
-        "Client: Premium Fashion Brand",
-        "Location: Studio Mumbai",
-        "Creative Director: Vishal Sharma",
-        "Art Direction: Modern Minimalism"
+        "Venue: The Taj, Mumbai",
+        "Wedding Planned by: Grand Events",
+        "Bride's Outfit: Manish Malhotra",
+        "Groom's Outfit: Rohit Bal"
       ],
-      coverImage: portfolio4,
-      images: [portfolio4, portfolio1, portfolio2, portfolio3, portfolio5, portfolio6],
-      videos: [
-        { title: "Brand Story", thumbnail: portfolio4 },
-        { title: "Product Showcase", thumbnail: portfolio1 },
-        { title: "Behind The Scenes", thumbnail: portfolio2 }
-      ]
+      coverImage: kiara1,
+      images: [kiara1, kiara2, kiara1, kiara2, kiara1, kiara2, kiara1, kiara2, kiara1, kiara2, kiara1, kiara2, kiara1, kiara2, kiara1, kiara2, kiara1, kiara2, kiara1, kiara2]
     },
-    "birthday-princess": {
-      title: "Little Princess Turns 5",
-      category: "Birthday",
+    "deepikaAndRanveer": {
+      title: "Deepika & Ranveer",
+      category: "Wedding",
       date: "August 2023",
-      location: "Bangalore, Karnataka",
-      description: "Capturing the magical moments of a special birthday celebration filled with joy, laughter, and precious memories that will last forever.",
+      location: "Lake Como, Italy",
+      description: "Capturing the magical moments of a special celebration filled with joy, laughter, and precious memories that will last forever.",
       details: [
-        "Theme: Fairy Tale Princess",
-        "Venue: The Leela Palace, Bangalore",
-        "Decor: Magical Moments Events",
-        "Cake: Sugar & Spice Bakery"
+        "Location: Villa del Balbianello, Lake Como",
+        "Wedding Planned by: Destination Dreams",
+        "Bride's Outfit: Sabyasachi, Anita Dongre",
+        "Groom's Outfit: Rohit Bal"
       ],
-      coverImage: portfolio5,
-      images: [portfolio5, portfolio1, portfolio2, portfolio3, portfolio4, portfolio6],
-      videos: [
-        { title: "Birthday Celebration", thumbnail: portfolio5 },
-        { title: "Party Highlights", thumbnail: portfolio1 },
-        { title: "Special Moments", thumbnail: portfolio2 }
-      ]
+      coverImage: deepika1,
+      images: [deepika1, deepika2, deepika1, deepika2, deepika1, deepika2, deepika1, deepika2, deepika1, deepika2, deepika1, deepika2, deepika1, deepika2, deepika1, deepika2, deepika1, deepika2, deepika1, deepika2]
     },
-    "fashion-editorial": {
-      title: "Fashion Editorial",
-      category: "Model",
+    "priyankaAndNick": {
+      title: "Priyanka & Nick",
+      category: "International Wedding",
       date: "July 2023",
-      location: "Delhi, India",
-      description: "High-fashion editorial photography showcasing style, elegance, and the art of professional modeling with contemporary aesthetics.",
+      location: "Jodhpur, Rajasthan",
+      description: "High-fashion editorial photography showcasing style, elegance, and the art of professional cross-cultural wedding celebrations.",
       details: [
-        "Model: Priya Sharma",
-        "Agency: Elite Models India",
-        "Styling: Fashion Forward Studio",
-        "Makeup: MAC Cosmetics"
+        "Venue: Umaid Bhawan Palace, Jodhpur",
+        "Wedding Planned by: Elite Destinations",
+        "Bride's Outfit: Ralph Lauren, Sabyasachi",
+        "Groom's Outfit: Zegna, Raghavendra Rathore"
       ],
-      coverImage: portfolio6,
-      images: [portfolio6, portfolio1, portfolio2, portfolio3, portfolio4, portfolio5],
-      videos: [
-        { title: "Fashion Film", thumbnail: portfolio6 },
-        { title: "Behind The Lens", thumbnail: portfolio1 },
-        { title: "Editorial Story", thumbnail: portfolio2 }
-      ]
+      coverImage: priyanka1,
+      images: [priyanka1, priyanka2, priyanka1, priyanka2, priyanka1, priyanka2, priyanka1, priyanka2, priyanka1, priyanka2, priyanka1, priyanka2, priyanka1, priyanka2, priyanka1, priyanka2, priyanka1, priyanka2, priyanka1, priyanka2]
     }
   };
+
+  // Define portfolio order
+  const portfolioOrder = ["priyaAndRahul", "saraAndJohn", "aliaAndRanbir", "kiaraAndSiddharth", "deepikaAndRanveer", "priyankaAndNick"];
+  const currentIndex = portfolioOrder.indexOf(id || "");
+  const prevPortfolio = currentIndex > 0 ? portfolioOrder[currentIndex - 1] : null;
+  const nextPortfolio = currentIndex < portfolioOrder.length - 1 ? portfolioOrder[currentIndex + 1] : null;
 
   const portfolio = id ? portfolioData[id] : null;
 
@@ -225,20 +209,28 @@ const PortfolioDetailPage = () => {
       <section className="py-8 bg-secondary border-t border-border">
         <div className="max-w-6xl mx-auto px-8 sm:px-12 lg:px-16">
           <div className="flex items-center justify-between">
-            <Link 
-              to="/portfolio/brand-campaign"
-              className="flex items-center gap-2 text-foreground hover:text-primary transition-colors group"
-            >
-              <ChevronLeft className="h-5 w-5 group-hover:-translate-x-1 transition-transform" />
-              <span className="font-playfair text-xl">Kiara & Siddharth</span>
-            </Link>
-            <Link 
-              to="/portfolio/sara-john"
-              className="flex items-center gap-2 text-foreground hover:text-primary transition-colors group"
-            >
-              <span className="font-playfair text-xl">Sara & John</span>
-              <ChevronRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
-            </Link>
+            {prevPortfolio ? (
+              <Link 
+                to={`/portfolio/${prevPortfolio}`}
+                className="flex items-center gap-2 text-foreground hover:text-primary transition-colors group"
+              >
+                <ChevronLeft className="h-5 w-5 group-hover:-translate-x-1 transition-transform" />
+                <span className="font-playfair text-xl">{portfolioData[prevPortfolio].title}</span>
+              </Link>
+            ) : (
+              <div></div>
+            )}
+            {nextPortfolio ? (
+              <Link 
+                to={`/portfolio/${nextPortfolio}`}
+                className="flex items-center gap-2 text-foreground hover:text-primary transition-colors group"
+              >
+                <span className="font-playfair text-xl">{portfolioData[nextPortfolio].title}</span>
+                <ChevronRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+              </Link>
+            ) : (
+              <div></div>
+            )}
           </div>
         </div>
       </section>

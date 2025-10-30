@@ -2,11 +2,11 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Link } from "react-router-dom";
 import { Play } from "lucide-react";
-import filmsBanner from "@/assets/films-banner.jpg";
-import portfolio1 from "@/assets/portfolio-1.jpg";
-import portfolio2 from "@/assets/portfolio-2.jpg";
-import portfolio3 from "@/assets/portfolio-3.jpg";
-import portfolio4 from "@/assets/portfolio-4.jpg";
+import filmsBanner from "@/assets/films/films-hero-video.jpg";
+import portfolio1 from "@/assets/portfolio/priyaAndRahul/image-1.jpg";
+import portfolio2 from "@/assets/portfolio/saraAndJohn/image-1.jpg";
+import portfolio3 from "@/assets/portfolio/aliaAndRanbir/image-1.jpg";
+import portfolio4 from "@/assets/portfolio/kiaraAndSiddharth/image-1.jpg";
 
 const FilmsPage = () => {
   const films = [

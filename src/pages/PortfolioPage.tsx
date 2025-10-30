@@ -2,19 +2,19 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import portfolio1 from "@/assets/portfolio-1.jpg";
-import portfolio2 from "@/assets/portfolio-2.jpg";
-import portfolio3 from "@/assets/portfolio-3.jpg";
-import portfolio4 from "@/assets/portfolio-4.jpg";
-import portfolio5 from "@/assets/portfolio-5.jpg";
-import portfolio6 from "@/assets/portfolio-6.jpg";
+import portfolio1 from "@/assets/portfolio/priyaAndRahul/image-1.jpg";
+import portfolio2 from "@/assets/portfolio/saraAndJohn/image-1.jpg";
+import portfolio3 from "@/assets/portfolio/aliaAndRanbir/image-1.jpg";
+import portfolio4 from "@/assets/portfolio/kiaraAndSiddharth/image-1.jpg";
+import portfolio5 from "@/assets/portfolio/deepikaAndRanveer/image-1.jpg";
+import portfolio6 from "@/assets/portfolio/priyankaAndNick/image-1.jpg";
 
 const PortfolioPage = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
 
   const portfolioItems = [
     {
-      id: "priya-rahul",
+      id: "priyaAndRahul",
       src: portfolio1,
       alt: "Traditional Indian wedding ceremony",
       title: "Priya & Rahul",
@@ -22,7 +22,7 @@ const PortfolioPage = () => {
       excerpt: "Let's call this our 'Happy New Year Wedding'. We welcomed 2024 partying with Reva and Zach and we couldn't have asked for a better beginning for the new year.",
     },
     {
-      id: "sara-john",
+      id: "saraAndJohn",
       src: portfolio2,
       alt: "Romantic engagement photoshoot",
       title: "Sara & John",
@@ -30,15 +30,15 @@ const PortfolioPage = () => {
       excerpt: "An evening of love, style and blend of two cultures in the heart of Singapore.",
     },
     {
-      id: "meera-arjun",
+      id: "aliaAndRanbir",
       src: portfolio3,
       alt: "Grand wedding reception celebration",
-      title: "Alia & Ranbir, Mumbai",
+      title: "Alia & Ranbir",
       category: "Indian",
       excerpt: "An unprecedented scoop of this generation decided to get married in the simplest possible way - in their balcony surrounded by only 30 of their closest friends and family members.",
     },
     {
-      id: "brand-campaign",
+      id: "kiaraAndSiddharth",
       src: portfolio4,
       alt: "Professional photography",
       title: "Kiara & Siddharth",
@@ -46,7 +46,7 @@ const PortfolioPage = () => {
       excerpt: "Professional commercial photography showcasing products and brand identity with creative vision and attention to detail.",
     },
     {
-      id: "birthday-princess",
+      id: "deepikaAndRanveer",
       src: portfolio5,
       alt: "Birthday celebration photography",
       title: "Deepika & Ranveer",
@@ -54,7 +54,7 @@ const PortfolioPage = () => {
       excerpt: "Capturing the magical moments of a special birthday celebration filled with joy, laughter, and precious memories.",
     },
     {
-      id: "fashion-editorial",
+      id: "priyankaAndNick",
       src: portfolio6,
       alt: "Professional model portfolio shoot",
       title: "Priyanka & Nick",
