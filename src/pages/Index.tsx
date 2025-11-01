@@ -33,10 +33,10 @@ const Index = () => {
   ];
 
   const featuredPortfolios = [
-    { id: "priya-rahul", image: portfolio1, title: "Reva & Zach", category: "International" },
+    { id: "priya-rahul", image: portfolio1, title: "Priya & Rahul", category: "Indian" },
     { id: "sara-john", image: portfolio2, title: "Sara & John", category: "International" },
-    { id: "meera-arjun", image: portfolio3, title: "Alia & Ranbir", category: "Indian" },
-    { id: "brand-campaign", image: portfolio4, title: "Kiara & Siddharth", category: "Indian" },
+    { id: "alia-ranbir", image: portfolio3, title: "Alia & Ranbir", category: "Indian" },
+    { id: "kiara-siddharth", image: portfolio4, title: "Kiara & Siddharth", category: "Indian" },
   ];
 
   return (

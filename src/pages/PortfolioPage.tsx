@@ -14,7 +14,7 @@ const PortfolioPage = () => {
 
   const portfolioItems = [
     {
-      id: "priyaAndRahul",
+      id: "priya-rahul",
       src: portfolio1,
       alt: "Traditional Indian wedding ceremony",
       title: "Priya & Rahul",
@@ -22,7 +22,7 @@ const PortfolioPage = () => {
       excerpt: "Let's call this our 'Happy New Year Wedding'. We welcomed 2024 partying with Reva and Zach and we couldn't have asked for a better beginning for the new year.",
     },
     {
-      id: "saraAndJohn",
+      id: "sara-john",
       src: portfolio2,
       alt: "Romantic engagement photoshoot",
       title: "Sara & John",
@@ -30,7 +30,7 @@ const PortfolioPage = () => {
       excerpt: "An evening of love, style and blend of two cultures in the heart of Singapore.",
     },
     {
-      id: "aliaAndRanbir",
+      id: "alia-ranbir",
       src: portfolio3,
       alt: "Grand wedding reception celebration",
       title: "Alia & Ranbir",
@@ -38,7 +38,7 @@ const PortfolioPage = () => {
       excerpt: "An unprecedented scoop of this generation decided to get married in the simplest possible way - in their balcony surrounded by only 30 of their closest friends and family members.",
     },
     {
-      id: "kiaraAndSiddharth",
+      id: "kiara-siddharth",
       src: portfolio4,
       alt: "Professional photography",
       title: "Kiara & Siddharth",
@@ -46,7 +46,7 @@ const PortfolioPage = () => {
       excerpt: "Professional commercial photography showcasing products and brand identity with creative vision and attention to detail.",
     },
     {
-      id: "deepikaAndRanveer",
+      id: "deepika-ranveer",
       src: portfolio5,
       alt: "Birthday celebration photography",
       title: "Deepika & Ranveer",
@@ -54,7 +54,7 @@ const PortfolioPage = () => {
       excerpt: "Capturing the magical moments of a special birthday celebration filled with joy, laughter, and precious memories.",
     },
     {
-      id: "priyankaAndNick",
+      id: "priyanka-nick",
       src: portfolio6,
       alt: "Professional model portfolio shoot",
       title: "Priyanka & Nick",

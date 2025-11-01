@@ -22,7 +22,7 @@ const PortfolioDetailPage = () => {
   const { id } = useParams();
 
   const portfolioData: Record<string, any> = {
-    "priyaAndRahul": {
+    "priya-rahul": {
       title: "Priya & Rahul",
       category: "Wedding",
       date: "December 2023",
@@ -38,7 +38,7 @@ const PortfolioDetailPage = () => {
       coverImage: priya1,
       images: [priya1, priya2, priya3, priya1, priya2, priya3, priya1, priya2, priya3, priya1, priya2, priya3, priya1, priya2, priya3, priya1, priya2, priya3, priya1, priya2]
     },
-    "saraAndJohn": {
+    "sara-john": {
       title: "Sara & John",
       category: "Engagement",
       date: "October 2023",
@@ -53,7 +53,7 @@ const PortfolioDetailPage = () => {
       coverImage: sara1,
       images: [sara1, sara2, sara3, sara1, sara2, sara3, sara1, sara2, sara3, sara1, sara2, sara3, sara1, sara2, sara3, sara1, sara2, sara3, sara1, sara2]
     },
-    "aliaAndRanbir": {
+    "alia-ranbir": {
       title: "Alia & Ranbir",
       category: "Reception",
       date: "November 2023",
@@ -68,7 +68,7 @@ const PortfolioDetailPage = () => {
       coverImage: alia1,
       images: [alia1, alia2, alia1, alia2, alia1, alia2, alia1, alia2, alia1, alia2, alia1, alia2, alia1, alia2, alia1, alia2, alia1, alia2, alia1, alia2]
     },
-    "kiaraAndSiddharth": {
+    "kiara-siddharth": {
       title: "Kiara & Siddharth",
       category: "Wedding",
       date: "September 2023",
@@ -83,7 +83,7 @@ const PortfolioDetailPage = () => {
       coverImage: kiara1,
       images: [kiara1, kiara2, kiara1, kiara2, kiara1, kiara2, kiara1, kiara2, kiara1, kiara2, kiara1, kiara2, kiara1, kiara2, kiara1, kiara2, kiara1, kiara2, kiara1, kiara2]
     },
-    "deepikaAndRanveer": {
+    "deepika-ranveer": {
       title: "Deepika & Ranveer",
       category: "Wedding",
       date: "August 2023",
@@ -98,7 +98,7 @@ const PortfolioDetailPage = () => {
       coverImage: deepika1,
       images: [deepika1, deepika2, deepika1, deepika2, deepika1, deepika2, deepika1, deepika2, deepika1, deepika2, deepika1, deepika2, deepika1, deepika2, deepika1, deepika2, deepika1, deepika2, deepika1, deepika2]
     },
-    "priyankaAndNick": {
+    "priyanka-nick": {
       title: "Priyanka & Nick",
       category: "International Wedding",
       date: "July 2023",
@@ -116,7 +116,7 @@ const PortfolioDetailPage = () => {
   };
 
   // Define portfolio order
-  const portfolioOrder = ["priyaAndRahul", "saraAndJohn", "aliaAndRanbir", "kiaraAndSiddharth", "deepikaAndRanveer", "priyankaAndNick"];
+  const portfolioOrder = ["priya-rahul", "sara-john", "alia-ranbir", "kiara-siddharth", "deepika-ranveer", "priyanka-nick"];
   const currentIndex = portfolioOrder.indexOf(id || "");
   const prevPortfolio = currentIndex > 0 ? portfolioOrder[currentIndex - 1] : null;
   const nextPortfolio = currentIndex < portfolioOrder.length - 1 ? portfolioOrder[currentIndex + 1] : null;

@@ -75,14 +75,14 @@ const EditorialPage = () => {
         </div>
       </section>
 
-      {/* Editorial Grid - 6 Columns */}
+      {/* Editorial Grid - 6 Columns with 2px margins like Iconic */}
       <section className="pb-20 bg-background">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+        <div className="px-[2px]">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-[2px]">
             {editorialImages.map((img, index) => (
               <div 
                 key={index} 
-                className="aspect-square overflow-hidden cursor-pointer group"
+                className="aspect-[3/4] overflow-hidden cursor-pointer group"
                 onClick={() => setSelectedImage(index)}
               >
                 <img
