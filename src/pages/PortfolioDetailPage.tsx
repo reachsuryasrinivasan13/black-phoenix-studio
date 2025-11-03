@@ -3,18 +3,81 @@ import { ArrowLeft, ChevronLeft, ChevronRight } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Badge } from "@/components/ui/badge";
+// Priya & Rahul images
 import priya1 from "@/assets/portfolio/priyaAndRahul/image-1.jpg";
 import priya2 from "@/assets/portfolio/priyaAndRahul/image-2.jpg";
 import priya3 from "@/assets/portfolio/priyaAndRahul/image-3.jpg";
+import priya4 from "@/assets/portfolio/priyaAndRahul/image-4.jpg";
+import priya5 from "@/assets/portfolio/priyaAndRahul/image-5.jpg";
+import priya6 from "@/assets/portfolio/priyaAndRahul/image-6.jpg";
+import priya7 from "@/assets/portfolio/priyaAndRahul/image-7.jpg";
+import priya8 from "@/assets/portfolio/priyaAndRahul/image-8.jpg";
+import priya9 from "@/assets/portfolio/priyaAndRahul/image-9.jpg";
+import priya10 from "@/assets/portfolio/priyaAndRahul/image-10.jpg";
+import priya11 from "@/assets/portfolio/priyaAndRahul/image-11.jpg";
+import priya12 from "@/assets/portfolio/priyaAndRahul/image-12.jpg";
+import priya13 from "@/assets/portfolio/priyaAndRahul/image-13.jpg";
+import priya14 from "@/assets/portfolio/priyaAndRahul/image-14.jpg";
+import priya15 from "@/assets/portfolio/priyaAndRahul/image-15.jpg";
+import priya16 from "@/assets/portfolio/priyaAndRahul/image-16.jpg";
+import priya17 from "@/assets/portfolio/priyaAndRahul/image-17.jpg";
+import priya18 from "@/assets/portfolio/priyaAndRahul/image-18.jpg";
+import priya19 from "@/assets/portfolio/priyaAndRahul/image-19.jpg";
+import priya20 from "@/assets/portfolio/priyaAndRahul/image-20.jpg";
+
+// Sara & John images
 import sara1 from "@/assets/portfolio/saraAndJohn/image-1.jpg";
 import sara2 from "@/assets/portfolio/saraAndJohn/image-2.jpg";
 import sara3 from "@/assets/portfolio/saraAndJohn/image-3.jpg";
+import sara4 from "@/assets/portfolio/saraAndJohn/image-4.jpg";
+import sara5 from "@/assets/portfolio/saraAndJohn/image-5.jpg";
+import sara6 from "@/assets/portfolio/saraAndJohn/image-6.jpg";
+import sara7 from "@/assets/portfolio/saraAndJohn/image-7.jpg";
+import sara8 from "@/assets/portfolio/saraAndJohn/image-8.jpg";
+import sara9 from "@/assets/portfolio/saraAndJohn/image-9.jpg";
+import sara10 from "@/assets/portfolio/saraAndJohn/image-10.jpg";
+import sara11 from "@/assets/portfolio/saraAndJohn/image-11.jpg";
+import sara12 from "@/assets/portfolio/saraAndJohn/image-12.jpg";
+import sara13 from "@/assets/portfolio/saraAndJohn/image-13.jpg";
+import sara14 from "@/assets/portfolio/saraAndJohn/image-14.jpg";
+import sara15 from "@/assets/portfolio/saraAndJohn/image-15.jpg";
+import sara16 from "@/assets/portfolio/saraAndJohn/image-16.jpg";
+import sara17 from "@/assets/portfolio/saraAndJohn/image-17.jpg";
+import sara18 from "@/assets/portfolio/saraAndJohn/image-18.jpg";
+import sara19 from "@/assets/portfolio/saraAndJohn/image-19.jpg";
+import sara20 from "@/assets/portfolio/saraAndJohn/image-20.jpg";
+
+// Alia & Ranbir images
 import alia1 from "@/assets/portfolio/aliaAndRanbir/image-1.jpg";
 import alia2 from "@/assets/portfolio/aliaAndRanbir/image-2.jpg";
+import alia3 from "@/assets/portfolio/aliaAndRanbir/image-3.jpg";
+import alia4 from "@/assets/portfolio/aliaAndRanbir/image-4.jpg";
+import alia5 from "@/assets/portfolio/aliaAndRanbir/image-5.jpg";
+import alia6 from "@/assets/portfolio/aliaAndRanbir/image-6.jpg";
+import alia7 from "@/assets/portfolio/aliaAndRanbir/image-7.jpg";
+import alia8 from "@/assets/portfolio/aliaAndRanbir/image-8.jpg";
+import alia9 from "@/assets/portfolio/aliaAndRanbir/image-9.jpg";
+import alia10 from "@/assets/portfolio/aliaAndRanbir/image-10.jpg";
+import alia11 from "@/assets/portfolio/aliaAndRanbir/image-11.jpg";
+import alia12 from "@/assets/portfolio/aliaAndRanbir/image-12.jpg";
+import alia13 from "@/assets/portfolio/aliaAndRanbir/image-13.jpg";
+import alia14 from "@/assets/portfolio/aliaAndRanbir/image-14.jpg";
+import alia15 from "@/assets/portfolio/aliaAndRanbir/image-15.jpg";
+import alia16 from "@/assets/portfolio/aliaAndRanbir/image-16.jpg";
+import alia17 from "@/assets/portfolio/aliaAndRanbir/image-17.jpg";
+import alia18 from "@/assets/portfolio/aliaAndRanbir/image-18.jpg";
+import alia19 from "@/assets/portfolio/aliaAndRanbir/image-19.jpg";
+import alia20 from "@/assets/portfolio/aliaAndRanbir/image-20.jpg";
+
+// Kiara & Siddharth images
 import kiara1 from "@/assets/portfolio/kiaraAndSiddharth/image-1.jpg";
 import kiara2 from "@/assets/portfolio/kiaraAndSiddharth/image-2.jpg";
+
+// Deepika & Ranveer images
 import deepika1 from "@/assets/portfolio/deepikaAndRanveer/image-1.jpg";
 import deepika2 from "@/assets/portfolio/deepikaAndRanveer/image-2.jpg";
+
+// Priyanka & Nick images
 import priyanka1 from "@/assets/portfolio/priyankaAndNick/image-1.jpg";
 import priyanka2 from "@/assets/portfolio/priyankaAndNick/image-2.jpg";
 
@@ -36,7 +99,7 @@ const PortfolioDetailPage = () => {
         "Hair: Amit Thakur"
       ],
       coverImage: priya1,
-      images: [priya1, priya2, priya3, priya1, priya2, priya3, priya1, priya2, priya3, priya1, priya2, priya3, priya1, priya2, priya3, priya1, priya2, priya3, priya1, priya2]
+      images: [priya1, priya2, priya3, priya4, priya5, priya6, priya7, priya8, priya9, priya10, priya11, priya12, priya13, priya14, priya15, priya16, priya17, priya18, priya19, priya20]
     },
     "sara-john": {
       title: "Sara & John",
@@ -51,7 +114,7 @@ const PortfolioDetailPage = () => {
         "Styling: Beach Elegance"
       ],
       coverImage: sara1,
-      images: [sara1, sara2, sara3, sara1, sara2, sara3, sara1, sara2, sara3, sara1, sara2, sara3, sara1, sara2, sara3, sara1, sara2, sara3, sara1, sara2]
+      images: [sara1, sara2, sara3, sara4, sara5, sara6, sara7, sara8, sara9, sara10, sara11, sara12, sara13, sara14, sara15, sara16, sara17, sara18, sara19, sara20]
     },
     "alia-ranbir": {
       title: "Alia & Ranbir",
@@ -66,7 +129,7 @@ const PortfolioDetailPage = () => {
         "Groom's Outfit: Custom Designer"
       ],
       coverImage: alia1,
-      images: [alia1, alia2, alia1, alia2, alia1, alia2, alia1, alia2, alia1, alia2, alia1, alia2, alia1, alia2, alia1, alia2, alia1, alia2, alia1, alia2]
+      images: [alia1, alia2, alia3, alia4, alia5, alia6, alia7, alia8, alia9, alia10, alia11, alia12, alia13, alia14, alia15, alia16, alia17, alia18, alia19, alia20]
     },
     "kiara-siddharth": {
       title: "Kiara & Siddharth",
@@ -138,10 +201,8 @@ const PortfolioDetailPage = () => {
     );
   }
 
-  // Create array of 24 images by repeating the portfolio images
-  const allImages = Array(24).fill(null).map((_, index) => 
-    portfolio.images[index % portfolio.images.length]
-  );
+  // Use all 20 images from the portfolio
+  const allImages = portfolio.images;
 
   return (
     <div className="min-h-screen bg-background">

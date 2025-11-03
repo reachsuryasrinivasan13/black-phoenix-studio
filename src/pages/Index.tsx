@@ -101,9 +101,9 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Some of the Most Iconic Images - 5x3 Grid with 2px gaps */}
+      {/* Some of the Most Iconic Images - Responsive Grid with 2px gaps */}
       <section className="py-0 px-[2px]">
-        <div className="grid grid-cols-5 gap-[2px]">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-[2px]">
           {iconicImages.map((img, index) => (
             <div key={index} className="aspect-square overflow-hidden">
               <img
