@@ -9,7 +9,6 @@ const Hero = () => {
           alt="Black Phoenix Photography - Professional Wedding Photography"
           className="h-full w-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/20 to-background" />
       </div>
       
       <div className="relative h-full flex items-center justify-center">

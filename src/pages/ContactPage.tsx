@@ -16,7 +16,6 @@ const ContactPage = () => {
             alt="Contact us banner"
             className="h-full w-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-background/30 to-background" />
         </div>
       </section>
 

@@ -34,7 +34,7 @@ const AboutPage = () => {
             alt="About us banner"
             className="h-full w-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-background/30 to-background flex items-center justify-center">
+          <div className="absolute inset-0 flex items-center justify-center">
             <div className="text-center">
               <h1 className="font-playfair text-5xl sm:text-6xl md:text-7xl font-bold text-foreground mb-4">
                 About Us
