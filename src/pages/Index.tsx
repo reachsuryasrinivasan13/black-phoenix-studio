@@ -56,25 +56,65 @@ const Index = () => {
       </section>
 
       {/* Modern Approach Section */}
-      <section className="py-12 sm:py-20 bg-background relative">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-12 sm:py-20 bg-background relative overflow-hidden">
+        {/* Decorative circular accent - desktop only, top right */}
+        <div className="hidden lg:block absolute top-0 right-0 w-96 h-96 -mt-20 -mr-20 rounded-full overflow-hidden opacity-30 z-0">
+          <img
+            src={modernApproach}
+            alt=""
+            className="h-full w-full object-cover"
+          />
+        </div>
+
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-7xl mx-auto">
-            {/* Heading */}
-            <div className="text-center mb-8 sm:mb-12">
-              <h2 className="font-playfair text-3xl sm:text-5xl md:text-6xl font-bold text-foreground tracking-wide">
-                A MODERN APPROACH
-              </h2>
-              <p className="font-playfair text-2xl sm:text-4xl md:text-5xl font-light italic text-foreground mt-2">
-                to an
-              </p>
-              <h3 className="font-playfair text-3xl sm:text-5xl md:text-6xl font-bold text-foreground tracking-wide">
-                AGE OLD TRADITION
-              </h3>
+            {/* Mobile Layout: Heading + 2 stacked images + text */}
+            <div className="lg:hidden">
+              {/* Heading */}
+              <div className="text-center mb-8">
+                <h2 className="font-playfair text-3xl sm:text-4xl font-bold text-foreground tracking-wide">
+                  A MODERN APPROACH
+                </h2>
+                <p className="font-playfair text-2xl sm:text-3xl font-light italic text-foreground mt-1">
+                  to an
+                </p>
+                <h3 className="font-playfair text-3xl sm:text-4xl font-bold text-foreground tracking-wide">
+                  AGE OLD TRADITION
+                </h3>
+              </div>
+
+              {/* Two Images Stacked */}
+              <div className="space-y-4 mb-8">
+                <div className="relative aspect-[3/4] overflow-hidden">
+                  <img
+                    src={modernApproach}
+                    alt="Modern photography approach"
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+                <div className="relative aspect-[3/4] overflow-hidden">
+                  <img
+                    src={modernApproach}
+                    alt="Wedding photography tradition"
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+              </div>
+
+              {/* Text Content */}
+              <div className="space-y-4 text-muted-foreground text-sm leading-relaxed mb-8">
+                <p>
+                  Considered to be the epitome of Modern Photography and Filmmaking, HOTC has transformed the Indian Wedding landscape on a regular basis. For almost a decade House On The Clouds has been creating photographs and films which are timeless and have been etched in memories of thousands of people forever.
+                </p>
+                <p>
+                  Awarded as the Wedding Filmmaker of the year for four consecutive years at the Weddingsutra awards along with numerous other awards HOTC is the only company listed on IMDB for its award winning films.
+                </p>
+              </div>
             </div>
 
-            {/* Images and Content Grid */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-              {/* Left Image */}
+            {/* Desktop Layout: Left image | Right (heading + text + image) */}
+            <div className="hidden lg:grid lg:grid-cols-2 lg:gap-12 lg:items-start">
+              {/* Left Column - Large Image */}
               <div className="relative aspect-[3/4] overflow-hidden">
                 <img
                   src={modernApproach}
@@ -82,34 +122,51 @@ const Index = () => {
                   className="h-full w-full object-cover"
                 />
               </div>
-              
-              {/* Right Image */}
-              <div className="relative aspect-[3/4] overflow-hidden">
-                <img
-                  src={modernApproach}
-                  alt="Wedding photography tradition"
-                  className="h-full w-full object-cover"
-                />
+
+              {/* Right Column - Content + Image */}
+              <div className="space-y-8">
+                {/* Heading and Text */}
+                <div>
+                  <div className="mb-8">
+                    <h2 className="font-playfair text-4xl xl:text-5xl font-bold text-foreground tracking-wide">
+                      A MODERN APPROACH
+                    </h2>
+                    <p className="font-playfair text-3xl xl:text-4xl font-light italic text-foreground mt-2">
+                      to an
+                    </p>
+                    <h3 className="font-playfair text-4xl xl:text-5xl font-bold text-foreground tracking-wide">
+                      AGE OLD TRADITION
+                    </h3>
+                  </div>
+
+                  <div className="space-y-4 text-muted-foreground text-sm xl:text-base leading-relaxed">
+                    <p>
+                      Considered to be the epitome of Modern Photography and Filmmaking, HOTC has transformed the Indian Wedding landscape on a regular basis. For almost a decade House On The Clouds has been creating photographs and films which are timeless and have been etched in memories of thousands of people forever.
+                    </p>
+                    <p>
+                      Awarded as the Wedding Filmmaker of the year for four consecutive years at the Weddingsutra awards along with numerous other awards HOTC is the only company listed on IMDB for its award winning films.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Second Image */}
+                <div className="relative aspect-[4/3] overflow-hidden">
+                  <img
+                    src={modernApproach}
+                    alt="Wedding photography tradition"
+                    className="h-full w-full object-cover"
+                  />
+                </div>
               </div>
             </div>
 
-            {/* Text Content */}
-            <div className="max-w-4xl mx-auto space-y-4 text-muted-foreground text-sm sm:text-base leading-relaxed mb-12">
-              <p>
-                Considered to be the epitome of Modern Photography and Filmmaking, HOTC has transformed the Indian Wedding landscape on a regular basis. For almost a decade House On The Clouds has been creating photographs and films which are timeless and have been etched in memories of thousands of people forever.
-              </p>
-              <p>
-                Awarded as the Wedding Filmmaker of the year for four consecutive years at the Weddingsutra awards along with numerous other awards HOTC is the only company listed on IMDB for its award winning films.
-              </p>
-            </div>
-
             {/* Magazine Logos */}
-            <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-12 opacity-60">
-              <span className="font-serif text-2xl sm:text-3xl tracking-wider">VOGUE</span>
-              <span className="font-bold text-xl sm:text-2xl tracking-wide">COSMOPOLITAN</span>
-              <span className="font-bold text-xl sm:text-2xl border-2 border-current px-3 py-1">HELLO!</span>
-              <span className="font-serif text-2xl sm:text-3xl tracking-wider">BRIDES<span className="text-xs align-super">TODAY</span></span>
-              <span className="font-bold text-lg sm:text-xl border-2 border-current px-3 py-1">TRAVEL+LEISURE</span>
+            <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-12 mt-12 opacity-60">
+              <span className="font-serif text-xl sm:text-2xl xl:text-3xl tracking-wider">VOGUE</span>
+              <span className="font-bold text-lg sm:text-xl xl:text-2xl tracking-wide">COSMOPOLITAN</span>
+              <span className="font-bold text-lg sm:text-xl xl:text-2xl border-2 border-current px-3 py-1">HELLO!</span>
+              <span className="font-serif text-xl sm:text-2xl xl:text-3xl tracking-wider">BRIDES<span className="text-xs align-super">TODAY</span></span>
+              <span className="font-bold text-base sm:text-lg xl:text-xl border-2 border-current px-3 py-1">TRAVEL+LEISURE</span>
             </div>
           </div>
         </div>
