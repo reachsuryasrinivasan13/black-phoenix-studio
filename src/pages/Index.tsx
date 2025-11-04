@@ -55,47 +55,61 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Modern Approach Section - Side by Side with Center Content Overlap */}
-      <section className="py-20 sm:py-32 bg-background relative">
+      {/* Modern Approach Section */}
+      <section className="py-12 sm:py-20 bg-background relative">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 items-start max-w-7xl mx-auto">
-            {/* Left Image */}
-            <div className="lg:col-span-4 relative aspect-[3/4] overflow-hidden">
-              <img
-                src={modernApproach}
-                alt="Modern photography approach - left"
-                className="h-full w-full object-cover"
-              />
-            </div>
-            
-            {/* Center Content - Overlapping */}
-            <div className="lg:col-span-4 relative z-10 bg-background p-8 sm:p-12 lg:p-16 flex flex-col justify-center">
-              <h2 className="font-playfair text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-2">
+          <div className="max-w-7xl mx-auto">
+            {/* Heading */}
+            <div className="text-center mb-8 sm:mb-12">
+              <h2 className="font-playfair text-3xl sm:text-5xl md:text-6xl font-bold text-foreground tracking-wide">
                 A MODERN APPROACH
               </h2>
-              <p className="font-playfair text-2xl sm:text-3xl md:text-4xl font-light italic text-foreground mb-6">
+              <p className="font-playfair text-2xl sm:text-4xl md:text-5xl font-light italic text-foreground mt-2">
                 to an
               </p>
-              <h3 className="font-playfair text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-8">
+              <h3 className="font-playfair text-3xl sm:text-5xl md:text-6xl font-bold text-foreground tracking-wide">
                 AGE OLD TRADITION
               </h3>
-              <div className="space-y-4 text-muted-foreground text-base leading-relaxed">
-                <p>
-                  Considered to be the epitome of Modern Photography and Filmmaking, HOTC has transformed the Indian Wedding landscape on a regular basis. For almost a decade House On The Clouds has been creating photographs and films which are timeless and have been etched in memories of thousands of people forever.
-                </p>
-                <p>
-                  Awarded as the Wedding Filmmaker of the year for four consecutive years at the Weddingsutra awards along with numerous other awards HOTC is the only company listed on IMDB for its award winning films.
-                </p>
+            </div>
+
+            {/* Images and Content Grid */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+              {/* Left Image */}
+              <div className="relative aspect-[3/4] overflow-hidden">
+                <img
+                  src={modernApproach}
+                  alt="Modern photography approach"
+                  className="h-full w-full object-cover"
+                />
+              </div>
+              
+              {/* Right Image */}
+              <div className="relative aspect-[3/4] overflow-hidden">
+                <img
+                  src={modernApproach}
+                  alt="Wedding photography tradition"
+                  className="h-full w-full object-cover"
+                />
               </div>
             </div>
-            
-            {/* Right Image */}
-            <div className="lg:col-span-4 relative aspect-[3/4] overflow-hidden">
-              <img
-                src={modernApproach}
-                alt="Modern photography approach - right"
-                className="h-full w-full object-cover"
-              />
+
+            {/* Text Content */}
+            <div className="max-w-4xl mx-auto space-y-4 text-muted-foreground text-sm sm:text-base leading-relaxed mb-12">
+              <p>
+                Considered to be the epitome of Modern Photography and Filmmaking, HOTC has transformed the Indian Wedding landscape on a regular basis. For almost a decade House On The Clouds has been creating photographs and films which are timeless and have been etched in memories of thousands of people forever.
+              </p>
+              <p>
+                Awarded as the Wedding Filmmaker of the year for four consecutive years at the Weddingsutra awards along with numerous other awards HOTC is the only company listed on IMDB for its award winning films.
+              </p>
+            </div>
+
+            {/* Magazine Logos */}
+            <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-12 opacity-60">
+              <span className="font-serif text-2xl sm:text-3xl tracking-wider">VOGUE</span>
+              <span className="font-bold text-xl sm:text-2xl tracking-wide">COSMOPOLITAN</span>
+              <span className="font-bold text-xl sm:text-2xl border-2 border-current px-3 py-1">HELLO!</span>
+              <span className="font-serif text-2xl sm:text-3xl tracking-wider">BRIDES<span className="text-xs align-super">TODAY</span></span>
+              <span className="font-bold text-lg sm:text-xl border-2 border-current px-3 py-1">TRAVEL+LEISURE</span>
             </div>
           </div>
         </div>
