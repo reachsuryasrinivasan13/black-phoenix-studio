@@ -1,10 +1,11 @@
 import heroImage from "@/assets/hero-image.jpg";
+import { LazyImage } from "@/components/LazyImage";
 
 const Hero = () => {
   return (
     <section id="home" className="relative h-screen w-full pt-20">
       <div className="absolute inset-0">
-        <img
+        <LazyImage
           src={heroImage}
           alt="Black Phoenix Photography - Professional Wedding Photography"
           className="h-full w-full object-cover"

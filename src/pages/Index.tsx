@@ -1,6 +1,7 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Link } from "react-router-dom";
+import { LazyImage } from "@/components/LazyImage";
 import heroImage from "@/assets/banner/home-hero-banner.jpg";
 import modernApproach from "@/assets/modern-approach.jpg";
 import filmsHeroVideo from "@/assets/films/films-hero-video.jpg";
@@ -46,12 +47,11 @@ const Index = () => {
       {/* Hero Banner */}
       <section className="relative h-screen w-full pt-20">
         <div className="absolute inset-0">
-          <img
+          <LazyImage
             src={heroImage}
             alt="Black Phoenix Photography - Professional Wedding Photography"
             className="h-full w-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/20 to-background" />
         </div>
       </section>
 
@@ -59,7 +59,7 @@ const Index = () => {
       <section className="py-12 sm:py-20 bg-background relative overflow-hidden">
         {/* Decorative circular accent - desktop only, top right */}
         <div className="hidden lg:block absolute top-0 right-0 w-96 h-96 -mt-20 -mr-20 rounded-full overflow-hidden opacity-30 z-0">
-          <img
+          <LazyImage
             src={modernApproach}
             alt=""
             className="h-full w-full object-cover"
@@ -86,14 +86,14 @@ const Index = () => {
               {/* Two Images Stacked */}
               <div className="space-y-4 mb-8">
                 <div className="relative aspect-[3/4] overflow-hidden">
-                  <img
+                  <LazyImage
                     src={modernApproach}
                     alt="Modern photography approach"
                     className="h-full w-full object-cover"
                   />
                 </div>
                 <div className="relative aspect-[3/4] overflow-hidden">
-                  <img
+                  <LazyImage
                     src={modernApproach}
                     alt="Wedding photography tradition"
                     className="h-full w-full object-cover"
@@ -116,7 +116,7 @@ const Index = () => {
             <div className="hidden lg:grid lg:grid-cols-2 lg:gap-12 lg:items-start">
               {/* Left Column - Large Image */}
               <div className="relative aspect-[3/4] overflow-hidden">
-                <img
+                <LazyImage
                   src={modernApproach}
                   alt="Modern photography approach"
                   className="h-full w-full object-cover"
@@ -151,7 +151,7 @@ const Index = () => {
 
                 {/* Second Image */}
                 <div className="relative aspect-[4/3] overflow-hidden">
-                  <img
+                  <LazyImage
                     src={modernApproach}
                     alt="Wedding photography tradition"
                     className="h-full w-full object-cover"
@@ -177,7 +177,7 @@ const Index = () => {
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-[2px]">
           {iconicImages.map((img, index) => (
             <div key={index} className="aspect-square overflow-hidden">
-              <img
+              <LazyImage
                 src={img}
                 alt={`Iconic moment ${index + 1}`}
                 className="h-full w-full object-cover hover:scale-110 transition-transform duration-700"
@@ -199,7 +199,7 @@ const Index = () => {
                 className="group"
               >
                 <div className="relative aspect-[3/4] overflow-hidden rounded-lg mb-4">
-                  <img
+                  <LazyImage
                     src={portfolio.image}
                     alt={portfolio.title}
                     className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
@@ -270,7 +270,7 @@ const Index = () => {
                 className="group"
               >
                 <div className="relative aspect-video overflow-hidden mb-4 bg-muted">
-                  <img
+                  <LazyImage
                     src={film.image}
                     alt={film.title}
                     className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"

@@ -1,5 +1,6 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import { LazyImage } from "@/components/LazyImage";
 import aboutBanner from "@/assets/banner/about-banner.jpg";
 import sunilPhoto from "@/assets/about/sunil-photo.jpg";
 import narasimmanPhoto from "@/assets/about/narasimman-photo.jpg";
@@ -29,7 +30,7 @@ const AboutPage = () => {
       {/* Hero Banner with Image */}
       <section className="relative pt-20">
         <div className="relative h-[60vh] min-h-[500px] overflow-hidden">
-          <img
+          <LazyImage
             src={aboutBanner}
             alt="About us banner"
             className="h-full w-full object-cover"
@@ -81,7 +82,7 @@ const AboutPage = () => {
               <div key={member.name} className="bg-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
                 {/* Photo Section */}
                 <div className="aspect-[4/5] overflow-hidden">
-                  <img
+                  <LazyImage
                     src={member.photo}
                     alt={`${member.name} - ${member.role}`}
                     className="h-full w-full object-cover hover:scale-105 transition-transform duration-500"

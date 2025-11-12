@@ -1,6 +1,7 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import Contact from "@/components/Contact";
+import { LazyImage } from "@/components/LazyImage";
 import contactBanner from "@/assets/banner/contact-hero-banner.jpg";
 
 const ContactPage = () => {
@@ -11,7 +12,7 @@ const ContactPage = () => {
       {/* Hero Banner with Image */}
       <section className="relative pt-20">
         <div className="relative h-[60vh] min-h-[500px] overflow-hidden">
-          <img
+          <LazyImage
             src={contactBanner}
             alt="Contact us banner"
             className="h-full w-full object-cover"

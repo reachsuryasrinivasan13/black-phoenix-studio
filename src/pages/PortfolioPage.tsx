@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import { LazyImage } from "@/components/LazyImage";
 import portfolio1 from "@/assets/portfolio/priyaAndRahul/image-1.jpg";
 import portfolio2 from "@/assets/portfolio/saraAndJohn/image-1.jpg";
 import portfolio3 from "@/assets/portfolio/aliaAndRanbir/image-1.jpg";
@@ -117,7 +118,7 @@ const PortfolioPage = () => {
                 className="group"
               >
                 <div className="relative aspect-[3/4] overflow-hidden rounded-lg mb-4">
-                  <img
+                  <LazyImage
                     src={item.src}
                     alt={item.alt}
                     className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"

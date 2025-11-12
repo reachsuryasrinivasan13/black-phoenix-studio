@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import { LazyImage } from "@/components/LazyImage";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 
 // Import editorial images
@@ -85,7 +86,7 @@ const EditorialPage = () => {
                 className="aspect-[3/4] overflow-hidden cursor-pointer group"
                 onClick={() => setSelectedImage(index)}
               >
-                <img
+                <LazyImage
                   src={img}
                   alt={`Editorial ${index + 1}`}
                   className="h-full w-full object-cover hover:scale-110 transition-transform duration-700"

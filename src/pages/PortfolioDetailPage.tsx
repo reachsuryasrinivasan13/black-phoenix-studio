@@ -2,6 +2,7 @@ import { useParams, Link } from "react-router-dom";
 import { ArrowLeft, ChevronLeft, ChevronRight } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import { LazyImage } from "@/components/LazyImage";
 import { Badge } from "@/components/ui/badge";
 // Priya & Rahul images
 import priya1 from "@/assets/portfolio/priyaAndRahul/image-1.jpg";
@@ -255,7 +256,7 @@ const PortfolioDetailPage = () => {
           <div className="space-y-6">
             {allImages.map((image, index) => (
               <div key={index} className="w-full overflow-hidden">
-                <img
+                <LazyImage
                   src={image}
                   alt={`${portfolio.title} - Photo ${index + 1}`}
                   className="w-full h-auto object-cover hover:scale-105 transition-transform duration-500"

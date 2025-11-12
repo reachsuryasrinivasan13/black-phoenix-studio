@@ -1,6 +1,7 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Link } from "react-router-dom";
+import { LazyImage } from "@/components/LazyImage";
 import { Play } from "lucide-react";
 import filmsBanner from "@/assets/films/films-hero-video.jpg";
 import portfolio1 from "@/assets/portfolio/priyaAndRahul/image-1.jpg";
@@ -83,7 +84,7 @@ const FilmsPage = () => {
                 className="group"
               >
                 <div className="relative aspect-[3/4] overflow-hidden mb-4 bg-muted">
-                  <img
+                  <LazyImage
                     src={film.image}
                     alt={film.title}
                     className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
