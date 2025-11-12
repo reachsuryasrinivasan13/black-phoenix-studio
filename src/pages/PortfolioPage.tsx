@@ -19,7 +19,7 @@ const PortfolioPage = () => {
       src: portfolio1,
       alt: "Traditional Indian wedding ceremony",
       title: "Priya & Rahul",
-      category: "Indian",
+      category: "wedding",
       excerpt: "Let's call this our 'Happy New Year Wedding'. We welcomed 2024 partying with Reva and Zach and we couldn't have asked for a better beginning for the new year.",
     },
     {
@@ -27,7 +27,7 @@ const PortfolioPage = () => {
       src: portfolio2,
       alt: "Romantic engagement photoshoot",
       title: "Sara & John",
-      category: "International",
+      category: "engagement",
       excerpt: "An evening of love, style and blend of two cultures in the heart of Singapore.",
     },
     {
@@ -35,36 +35,36 @@ const PortfolioPage = () => {
       src: portfolio3,
       alt: "Grand wedding reception celebration",
       title: "Alia & Ranbir",
-      category: "Indian",
+      category: "wedding",
       excerpt: "An unprecedented scoop of this generation decided to get married in the simplest possible way - in their balcony surrounded by only 30 of their closest friends and family members.",
     },
     {
       id: "kiara-siddharth",
       src: portfolio4,
-      alt: "Professional photography",
+      alt: "Wedding reception photography",
       title: "Kiara & Siddharth",
-      category: "Indian",
-      excerpt: "Professional commercial photography showcasing products and brand identity with creative vision and attention to detail.",
+      category: "wedding reception",
+      excerpt: "A grand celebration of love with stunning décor, joyful moments, and unforgettable memories captured in every frame.",
     },
     {
       id: "deepika-ranveer",
       src: portfolio5,
       alt: "Birthday celebration photography",
       title: "Deepika & Ranveer",
-      category: "Indian",
+      category: "birthday",
       excerpt: "Capturing the magical moments of a special birthday celebration filled with joy, laughter, and precious memories.",
     },
     {
       id: "priyanka-nick",
       src: portfolio6,
-      alt: "Professional model portfolio shoot",
+      alt: "Engagement photoshoot",
       title: "Priyanka & Nick",
-      category: "International",
-      excerpt: "High-fashion editorial photography showcasing style, elegance, and the art of professional modeling.",
+      category: "engagement",
+      excerpt: "High-fashion engagement photography showcasing style, elegance, and the beginning of a beautiful journey together.",
     },
   ];
 
-  const categories = ["All", "International", "Indian"];
+  const categories = ["All", "engagement", "wedding", "wedding reception", "birthday"];
 
   const filteredItems = selectedCategory === "All" 
     ? portfolioItems 
