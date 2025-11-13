@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
@@ -11,8 +10,6 @@ import portfolio5 from "@/assets/portfolio/deepikaAndRanveer/image-1.jpg";
 import portfolio6 from "@/assets/portfolio/priyankaAndNick/image-1.jpg";
 
 const PortfolioPage = () => {
-  const [selectedCategory, setSelectedCategory] = useState("All");
-
   const portfolioItems = [
     {
       id: "priya-rahul",
@@ -64,54 +61,26 @@ const PortfolioPage = () => {
     },
   ];
 
-  const categories = ["All", "engagement", "wedding", "wedding reception", "birthday"];
-
-  const filteredItems = selectedCategory === "All" 
-    ? portfolioItems 
-    : portfolioItems.filter(item => item.category === selectedCategory);
-
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
       
       {/* Hero Banner */}
-      <section className="pt-32 pb-12 bg-background">
+      <section className="pt-32 pb-8 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="font-playfair text-5xl sm:text-6xl md:text-7xl font-bold text-foreground mb-4">
+            <h1 className="font-playfair text-5xl sm:text-6xl md:text-7xl font-bold text-foreground">
               Photography
             </h1>
-            <div className="mb-8">
-              <p className="text-muted-foreground text-lg">
-                Select: {" "}
-                <span className="inline-flex gap-1">
-                  {categories.map((category, index) => (
-                    <span key={category}>
-                      <button
-                        onClick={() => setSelectedCategory(category)}
-                        className={`hover:text-foreground transition-colors ${
-                          selectedCategory === category
-                            ? "text-foreground font-medium underline"
-                            : "text-muted-foreground"
-                        }`}
-                      >
-                        {category}
-                      </button>
-                      {index < categories.length - 1 && <span className="text-muted-foreground"> | </span>}
-                    </span>
-                  ))}
-                </span>
-              </p>
-            </div>
           </div>
         </div>
       </section>
 
       {/* Portfolio Grid - 4 Columns with White Background */}
-      <section className="py-20">
+      <section className="py-8">
         <div className="bg-card mx-4 sm:mx-8 lg:mx-16 p-8 sm:p-12 lg:p-16 rounded-lg">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
-            {filteredItems.map((item) => (
+            {portfolioItems.map((item) => (
               <Link
                 key={item.id}
                 to={`/portfolio/${item.id}`}

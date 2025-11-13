@@ -56,20 +56,17 @@ const Index = () => {
       </section>
 
       {/* Modern Approach Section */}
-      <section className="py-12 sm:py-20 bg-background relative overflow-hidden">
+      <section className="py-12 sm:py-20 bg-[#E8E3DA] relative overflow-hidden">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto">
             {/* Heading - Centered at Top */}
             <div className="text-center mb-8 lg:mb-12">
-              <h2 className="font-playfair text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground tracking-wide leading-tight">
+              <h2 className="font-playfair text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground tracking-[0.2em] leading-tight">
                 A MODERN APPROACH
               </h2>
               <p className="font-playfair text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-light italic text-foreground mt-1 lg:mt-2">
-                to an
+                to an <span className="font-bold not-italic tracking-[0.2em]">AGE OLD TRADITION</span>
               </p>
-              <h3 className="font-playfair text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground tracking-wide leading-tight">
-                AGE OLD TRADITION
-              </h3>
             </div>
 
             {/* Mobile Layout: Stacked Images and Text */}
@@ -82,7 +79,7 @@ const Index = () => {
                 />
               </div>
 
-              <div className="space-y-4 text-muted-foreground text-sm leading-relaxed px-4">
+              <div className="space-y-4 text-foreground/80 text-sm leading-relaxed px-4">
                 <p>
                   Considered to be the epitome of Modern Photography and Filmmaking, HOTC has transformed the Indian Wedding landscape on a regular basis. For almost a decade House On The Clouds has been creating photographs and films which are timeless and have been etched in memories of thousands of people forever.
                 </p>
@@ -100,8 +97,8 @@ const Index = () => {
               </div>
             </div>
 
-            {/* Desktop Layout: 3 Columns (Image | Text | Image) */}
-            <div className="hidden lg:grid lg:grid-cols-[1fr_1.2fr_1fr] lg:gap-8 xl:gap-12 lg:items-start">
+            {/* Desktop Layout: 3 Columns (Image | Text | Images Stack) */}
+            <div className="hidden lg:grid lg:grid-cols-[1fr_1.5fr_1fr] lg:gap-8 xl:gap-12 lg:items-start">
               {/* Left Image */}
               <div className="relative aspect-[3/4] overflow-hidden">
                 <LazyImage
@@ -113,7 +110,7 @@ const Index = () => {
 
               {/* Center Text */}
               <div className="flex items-center">
-                <div className="space-y-6 text-muted-foreground text-sm xl:text-base leading-relaxed">
+                <div className="space-y-6 text-foreground/80 text-sm xl:text-base leading-relaxed">
                   <p>
                     Considered to be the epitome of Modern Photography and Filmmaking, HOTC has transformed the Indian Wedding landscape on a regular basis. For almost a decade House On The Clouds has been creating photographs and films which are timeless and have been etched in memories of thousands of people forever.
                   </p>
@@ -123,13 +120,25 @@ const Index = () => {
                 </div>
               </div>
 
-              {/* Right Image */}
-              <div className="relative aspect-[4/3] overflow-hidden">
-                <LazyImage
-                  src={modernApproach}
-                  alt="Wedding photography tradition"
-                  className="h-full w-full object-cover"
-                />
+              {/* Right Side - Two Stacked Images */}
+              <div className="space-y-4 relative">
+                {/* Top Right Corner Image - Smaller */}
+                <div className="relative aspect-[4/3] overflow-hidden ml-auto w-3/4">
+                  <LazyImage
+                    src={modernApproach}
+                    alt="Wedding photography detail"
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+                
+                {/* Bottom Right Image - Larger */}
+                <div className="relative aspect-[4/3] overflow-hidden">
+                  <LazyImage
+                    src={modernApproach}
+                    alt="Wedding photography tradition"
+                    className="h-full w-full object-cover"
+                  />
+                </div>
               </div>
             </div>
 
