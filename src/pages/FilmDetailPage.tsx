@@ -1,6 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import { LazyImage } from "@/components/LazyImage";
 import { Play, ArrowLeft, ChevronLeft, ChevronRight } from "lucide-react";
 import portfolio1 from "@/assets/portfolio/priyaAndRahul/image-1.jpg";
 import portfolio2 from "@/assets/portfolio/saraAndJohn/image-1.jpg";
@@ -100,7 +101,7 @@ const FilmDetailPage = () => {
                 <Play className="h-10 w-10 text-primary-foreground ml-1" fill="currentColor" />
               </div>
             </div>
-            <img
+            <LazyImage
               src={film.thumbnail}
               alt={film.title}
               className="h-full w-full object-cover"

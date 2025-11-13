@@ -2,6 +2,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Link } from "react-router-dom";
 import { LazyImage } from "@/components/LazyImage";
+import { LazyVideo } from "@/components/LazyVideo";
 import { Play } from "lucide-react";
 import filmsBanner from "@/assets/films/films-hero-video.jpg";
 import portfolio1 from "@/assets/portfolio/priyaAndRahul/image-1.jpg";
@@ -56,15 +57,14 @@ const FilmsPage = () => {
       {/* Hero Banner with Video */}
       <section className="relative pt-20">
         <div className="relative h-[70vh] min-h-[600px] overflow-hidden">
-          <video
+          <LazyVideo
+            src={filmsBanner}
             autoPlay
             loop
             muted
             playsInline
             className="h-full w-full object-cover"
-          >
-            <source src={filmsBanner} type="video/mp4" />
-          </video>
+          />
           <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-background/40 to-background flex items-center justify-start px-8 sm:px-16 lg:px-24">
             <h1 className="font-playfair text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-light italic text-white">
               Inspired by Cinema.

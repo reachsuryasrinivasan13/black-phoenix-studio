@@ -2,6 +2,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Link } from "react-router-dom";
 import { LazyImage } from "@/components/LazyImage";
+import { LazyVideo } from "@/components/LazyVideo";
 import heroImage from "@/assets/banner/home-hero-banner.jpg";
 import modernApproach from "@/assets/modern-approach.jpg";
 import filmsHeroVideo from "@/assets/films/films-hero-video.jpg";
@@ -212,15 +213,14 @@ const Index = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           {/* Video Banner Section with "Inspired by Cinema" */}
           <div className="relative h-screen min-h-[600px] overflow-hidden mb-16">
-            <video
+            <LazyVideo
+              src={filmsHeroVideo}
               autoPlay
               loop
               muted
               playsInline
               className="h-full w-full object-cover"
-            >
-              <source src={filmsHeroVideo} type="video/mp4" />
-            </video>
+            />
             <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/40 to-background/80 flex items-center justify-start px-8 sm:px-16 lg:px-24">
               <h2 className="font-playfair text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-light italic text-white">
                 Inspired by Cinema.
