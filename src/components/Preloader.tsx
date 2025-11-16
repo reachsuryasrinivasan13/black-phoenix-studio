@@ -18,13 +18,13 @@ export const Preloader = () => {
     return () => clearTimeout(minLoadTime);
   }, []);
 
-  if (!isLoading && !isExiting) return null;
+  if (!isLoading) return null;
 
   return (
     <div
       className={cn(
         "fixed inset-0 z-[9999] flex items-center justify-center bg-background transition-opacity duration-700",
-        isExiting ? "opacity-0" : "opacity-100"
+        isExiting ? "opacity-0 pointer-events-none" : "opacity-100"
       )}
     >
       <div className="text-center space-y-6">
