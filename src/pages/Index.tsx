@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import { Link } from "react-router-dom";
 import { LazyImage } from "@/components/LazyImage";
 import { LazyVideo } from "@/components/LazyVideo";
+import { ScrollAnimation } from "@/components/ScrollAnimation";
 import heroImage from "@/assets/banner/home-hero-banner.jpg";
 import modernApproach from "@/assets/modern-approach.jpg";
 import filmsHeroVideo from "@/assets/films/films-hero-video.jpg";
@@ -61,14 +62,16 @@ const Index = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto">
             {/* Heading - Centered at Top */}
-            <div className="text-center mb-8 lg:mb-12">
-              <h2 className="font-playfair text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground tracking-[0.2em] leading-tight">
-                A MODERN APPROACH
-              </h2>
-              <p className="font-playfair text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-light italic text-foreground mt-1 lg:mt-2">
-                to an <span className="font-bold not-italic tracking-[0.2em]">AGE OLD TRADITION</span>
-              </p>
-            </div>
+            <ScrollAnimation direction="fade" delay={0.1}>
+              <div className="text-center mb-8 lg:mb-12">
+                <h2 className="font-playfair text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground tracking-[0.2em] leading-tight">
+                  A MODERN APPROACH
+                </h2>
+                <p className="font-playfair text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-light italic text-foreground mt-1 lg:mt-2">
+                  to an <span className="font-bold not-italic tracking-[0.2em]">AGE OLD TRADITION</span>
+                </p>
+              </div>
+            </ScrollAnimation>
 
             {/* Mobile Layout: Stacked Images and Text */}
             <div className="lg:hidden space-y-6">
@@ -175,25 +178,29 @@ const Index = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-            {featuredPortfolios.map((portfolio) => (
-              <Link 
-                key={portfolio.id}
-                to={`/portfolio/${portfolio.id}`}
-                className="group"
-              >
-                <div className="relative aspect-[3/4] overflow-hidden rounded-lg mb-4">
-                  <LazyImage
-                    src={portfolio.image}
-                    alt={portfolio.title}
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-background/0 to-background/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                </div>
-                <h3 className="font-playfair text-xl font-semibold text-foreground mb-1">
-                  {portfolio.title}
-                </h3>
-                <p className="text-muted-foreground">{portfolio.category}</p>
-              </Link>
+            {featuredPortfolios.map((portfolio, index) => (
+              <ScrollAnimation key={portfolio.id} direction="up" delay={index * 0.1}>
+                <Link
+                  to={`/portfolio/${portfolio.id}`}
+                  className="group block overflow-hidden"
+                >
+                  <div className="aspect-[3/4] overflow-hidden">
+                    <LazyImage
+                      src={portfolio.image}
+                      alt={portfolio.title}
+                      className="h-full w-full object-cover group-hover:scale-110 transition-all duration-700 ease-out"
+                    />
+                  </div>
+                  <div className="pt-4 space-y-1">
+                    <h3 className="font-playfair text-2xl font-semibold text-foreground group-hover:text-primary transition-colors">
+                      {portfolio.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground uppercase tracking-wider">
+                      {portfolio.category}
+                    </p>
+                  </div>
+                </Link>
+              </ScrollAnimation>
             ))}
           </div>
 
@@ -212,31 +219,35 @@ const Index = () => {
       <section className="py-20 sm:py-32 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           {/* Video Banner Section with "Inspired by Cinema" */}
-          <div className="relative h-screen min-h-[600px] overflow-hidden mb-16">
-            <LazyVideo
-              src={filmsHeroVideo}
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="h-full w-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/40 to-background/80 flex items-center justify-start px-8 sm:px-16 lg:px-24">
-              <h2 className="font-playfair text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-light italic text-white">
-                Inspired by Cinema.
-              </h2>
+          <ScrollAnimation direction="fade">
+            <div className="relative h-screen min-h-[600px] overflow-hidden mb-16">
+              <LazyVideo
+                src={filmsHeroVideo}
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="h-full w-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/40 to-background/80 flex items-center justify-start px-8 sm:px-16 lg:px-24">
+                <h2 className="font-playfair text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-light italic text-white">
+                  Inspired by Cinema.
+                </h2>
+              </div>
             </div>
-          </div>
+          </ScrollAnimation>
 
           {/* Content Text */}
-          <div className="max-w-4xl mx-auto text-center mb-16 px-4">
-            <p className="text-muted-foreground text-lg leading-relaxed">
-              We at HOTC celebrate the wild ones, the rule breakers, the travellers, the new age modern couple who are not afraid to experiment. We believe the ultimate goal of a wedding photographer is to justify the vibe of the wedding and the personalities of the couple. And this approach has helped us experience weddings in a two bedroom apartments to weddings spread over 2 continents.
-            </p>
-            <p className="text-muted-foreground text-lg leading-relaxed mt-6">
-              Here are some selected weddings from past couple of years to showcase the union of two people in the most authentic way possible.
-            </p>
-          </div>
+          <ScrollAnimation direction="up" delay={0.2}>
+            <div className="max-w-4xl mx-auto text-center mb-16 px-4">
+              <p className="text-muted-foreground text-lg leading-relaxed">
+                We at HOTC celebrate the wild ones, the rule breakers, the travellers, the new age modern couple who are not afraid to experiment. We believe the ultimate goal of a wedding photographer is to justify the vibe of the wedding and the personalities of the couple. And this approach has helped us experience weddings in a two bedroom apartments to weddings spread over 2 continents.
+              </p>
+              <p className="text-muted-foreground text-lg leading-relaxed mt-6">
+                Here are some selected weddings from past couple of years to showcase the union of two people in the most authentic way possible.
+              </p>
+            </div>
+          </ScrollAnimation>
 
           {/* 2x2 Video Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-6xl mx-auto">
@@ -245,29 +256,30 @@ const Index = () => {
               { id: "film-2", title: "Saloni & SO", location: "Bangkok", image: portfolio2 },
               { id: "film-3", title: "Zinzan", location: "New Zealand", image: portfolio3 },
               { id: "film-4", title: "Reva & Zach", location: "Udaipur", image: portfolio4 },
-            ].map((film) => (
-              <Link
-                key={film.id}
-                to={`/films/${film.id}`}
-                className="group"
-              >
-                <div className="relative aspect-video overflow-hidden mb-4 bg-muted">
-                  <LazyImage
-                    src={film.image}
-                    alt={film.title}
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="w-16 h-16 rounded-full bg-white/20 flex items-center justify-center backdrop-blur-sm">
-                      <Play className="h-8 w-8 text-white ml-1" fill="currentColor" />
+            ].map((film, index) => (
+              <ScrollAnimation key={film.id} direction="up" delay={0.3 + index * 0.1}>
+                <Link
+                  to={`/films/${film.id}`}
+                  className="group"
+                >
+                  <div className="relative aspect-video overflow-hidden mb-4 bg-muted">
+                    <LazyImage
+                      src={film.image}
+                      alt={film.title}
+                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="w-16 h-16 rounded-full bg-white/20 flex items-center justify-center backdrop-blur-sm">
+                        <Play className="h-8 w-8 text-white ml-1" fill="currentColor" />
+                      </div>
                     </div>
                   </div>
-                </div>
-                <h3 className="font-playfair text-2xl font-semibold text-foreground mb-1">
-                  {film.title}
-                </h3>
-                <p className="text-muted-foreground">{film.location}</p>
-              </Link>
+                  <h3 className="font-playfair text-2xl font-semibold text-foreground mb-1">
+                    {film.title}
+                  </h3>
+                  <p className="text-muted-foreground">{film.location}</p>
+                </Link>
+              </ScrollAnimation>
             ))}
           </div>
         </div>
