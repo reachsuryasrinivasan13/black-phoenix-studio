@@ -2,6 +2,7 @@ import { useState } from "react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { LazyImage } from "@/components/LazyImage";
+import { ScrollAnimation } from "@/components/ScrollAnimation";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 
 // Import editorial images
@@ -65,14 +66,16 @@ const EditorialPage = () => {
       {/* Hero Section */}
       <section className="pt-28 pb-12 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-4xl mx-auto">
-            <h1 className="font-playfair text-5xl sm:text-6xl md:text-7xl font-bold text-foreground mb-6">
-              Editorial
-            </h1>
-            <p className="text-muted-foreground text-lg leading-relaxed">
-              A curated collection of fashion and lifestyle editorial photography showcasing our artistic vision and creative storytelling.
-            </p>
-          </div>
+          <ScrollAnimation direction="fade">
+            <div className="text-center max-w-4xl mx-auto">
+              <h1 className="font-playfair text-5xl sm:text-6xl md:text-7xl font-bold text-foreground mb-6">
+                Editorial
+              </h1>
+              <p className="text-muted-foreground text-lg leading-relaxed">
+                A curated collection of fashion and lifestyle editorial photography showcasing our artistic vision and creative storytelling.
+              </p>
+            </div>
+          </ScrollAnimation>
         </div>
       </section>
 

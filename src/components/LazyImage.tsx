@@ -52,7 +52,7 @@ export const LazyImage = ({ src, alt, className, skeletonClassName, blurDataURL 
     <div ref={imgRef} className="relative w-full h-full overflow-hidden" style={placeholderStyle}>
       {/* Blur placeholder background */}
       {isLoading && (
-        <div className="absolute inset-0">
+        <div className="absolute inset-0 pointer-events-none">
           <Skeleton className={cn("w-full h-full", skeletonClassName)} />
         </div>
       )}
@@ -77,7 +77,7 @@ export const LazyImage = ({ src, alt, className, skeletonClassName, blurDataURL 
       )}
       
       {hasError && (
-        <div className="absolute inset-0 flex items-center justify-center bg-muted">
+        <div className="absolute inset-0 flex items-center justify-center bg-muted pointer-events-none">
           <p className="text-muted-foreground text-sm">Failed to load image</p>
         </div>
       )}
