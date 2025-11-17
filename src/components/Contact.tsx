@@ -54,34 +54,47 @@ const Contact = () => {
 
   const onSubmit = async (values: FormValues) => {
     setIsSubmitting(true);
-    
-    // Create mailto link with form data
-    const subject = encodeURIComponent(`New Event Inquiry - ${values.eventType} from ${values.name}`);
-    const body = encodeURIComponent(`
-Name: ${values.name}
-Email: ${values.email}
-Phone: ${values.phone}
-Event Type: ${values.eventType}
-Event Date/Duration: ${values.eventDate}
-Location: ${values.eventLocation}
-Services Requested: ${values.services.join(", ")}
 
-Message:
-${values.message}
-    `);
-    
-    const mailtoLink = `mailto:blackphoenixstudio07@gmail.com?subject=${subject}&body=${body}`;
-    
-    // Open email client
-    window.location.href = mailtoLink;
-    
-    toast.success("Opening your email client...", {
-      description: "Please send the pre-filled email to complete your inquiry.",
-    });
-    
-    // Reset form
-    form.reset();
-    setIsSubmitting(false);
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/blackphoenixstudio07@gmail.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          _subject: values.eventType,
+          _template: "table",
+          _captcha: "false",
+          _replyto: values.email,
+          Name: values.name,
+          Email: values.email,
+          Phone: values.phone,
+          "Event Type": values.eventType,
+          "Estimated Event Dates": values.eventDate,
+          Location: values.eventLocation,
+          "Services Requested": values.services.join(", "),
+          Message: values.message,
+        }),
+      });
+
+      if (!response.ok) {
+        const err = await response.json().catch(() => ({}));
+        throw new Error(err?.message || "Failed to send your message.");
+      }
+
+      toast.success("Message sent!", {
+        description: "Thanks! We’ll be in touch shortly.",
+      });
+
+      form.reset();
+    } catch (error: any) {
+      toast.error("Could not send message", {
+        description: error?.message ?? "Please try again in a moment.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const services = ["Photography", "Films", "Edit-Photography-and-Films"];
