@@ -15,7 +15,18 @@ const formSchema = z.object({
   name: z.string().min(2, { message: "Name is required" }).max(100),
   email: z.string().email({ message: "Invalid email address" }).max(255),
   phone: z.string().min(10, { message: "Phone number is required" }).max(15),
-  eventDate: z.string().min(1, { message: "Event date is required" }),
+  eventDate: z.string()
+    .min(1, { message: "Event date is required" })
+    .refine((val) => {
+      const isValid = /^\d{4}-\d{2}-\d{2}$/.test(val);
+      if (!isValid) return false;
+      const [y, m, d] = val.split("-").map(Number);
+      const selected = new Date(y, m - 1, d);
+      selected.setHours(0, 0, 0, 0);
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      return selected >= today;
+    }, { message: "Please select today or a future date" }),
   eventLocation: z.string().min(1, { message: "Location is required" }).max(200),
   eventType: z.string().min(1, { message: "Event type is required" }),
   message: z.string().min(10, { message: "Please tell us about your event (minimum 10 characters)" }).max(1000),
@@ -213,7 +224,8 @@ ${values.message}
                         </FormLabel>
                         <FormControl>
                           <Input 
-                            placeholder="e.g., December 2025 or 3 days" 
+                            type="date"
+                            min={`${new Date().getFullYear()}-${String(new Date().getMonth() + 1).padStart(2, "0")}-${String(new Date().getDate()).padStart(2, "0")}`}
                             className="bg-background border-input"
                             {...field} 
                           />
