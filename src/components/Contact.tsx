@@ -1,32 +1,31 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
+import { format } from "date-fns";
 import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { Calendar } from "@/components/ui/calendar";
 import { toast } from "sonner";
-import { Mail, Phone, Instagram } from "lucide-react";
+import { Mail, Phone, Instagram, CalendarIcon, CheckCircle } from "lucide-react";
 import { useState } from "react";
+import { cn } from "@/lib/utils";
 
 const formSchema = z.object({
   name: z.string().min(2, { message: "Name is required" }).max(100),
   email: z.string().email({ message: "Invalid email address" }).max(255),
   phone: z.string().min(10, { message: "Phone number is required" }).max(15),
-  eventDate: z.string()
-    .min(1, { message: "Event date is required" })
-    .refine((val) => {
-      const isValid = /^\d{4}-\d{2}-\d{2}$/.test(val);
-      if (!isValid) return false;
-      const [y, m, d] = val.split("-").map(Number);
-      const selected = new Date(y, m - 1, d);
-      selected.setHours(0, 0, 0, 0);
-      const today = new Date();
-      today.setHours(0, 0, 0, 0);
-      return selected >= today;
-    }, { message: "Please select today or a future date" }),
+  eventDate: z.date({
+    required_error: "Event date is required",
+  }).refine((date) => {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    return date >= today;
+  }, { message: "Please select today or a future date" }),
   eventLocation: z.string().min(1, { message: "Location is required" }).max(200),
   eventType: z.string().min(1, { message: "Event type is required" }),
   message: z.string().min(10, { message: "Please tell us about your event (minimum 10 characters)" }).max(1000),
@@ -37,6 +36,7 @@ type FormValues = z.infer<typeof formSchema>;
 
 const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -44,7 +44,7 @@ const Contact = () => {
       name: "",
       email: "",
       phone: "",
-      eventDate: "",
+      eventDate: undefined,
       eventLocation: "",
       eventType: "",
       message: "",
@@ -71,7 +71,7 @@ const Contact = () => {
           Email: values.email,
           Phone: values.phone,
           "Event Type": values.eventType,
-          "Estimated Event Dates": values.eventDate,
+          "Estimated Event Dates": format(values.eventDate, "PPP"),
           Location: values.eventLocation,
           "Services Requested": values.services.join(", "),
           Message: values.message,
@@ -83,11 +83,16 @@ const Contact = () => {
         throw new Error(err?.message || "Failed to send your message.");
       }
 
-      toast.success("Message sent!", {
-        description: "Thanks! We’ll be in touch shortly.",
-      });
+      // Track conversion
+      if (typeof window !== "undefined" && (window as any).gtag) {
+        (window as any).gtag("event", "conversion", {
+          event_category: "form",
+          event_label: "contact_form_submission",
+        });
+      }
 
       form.reset();
+      setIsSubmitted(true);
     } catch (error: any) {
       toast.error("Could not send message", {
         description: error?.message ?? "Please try again in a moment.",
@@ -159,6 +164,26 @@ const Contact = () => {
             </div>
           </div>
 
+          {isSubmitted ? (
+            <div className="bg-card p-8 sm:p-16 rounded-lg border border-border shadow-sm text-center">
+              <div className="flex justify-center mb-6">
+                <CheckCircle className="w-20 h-20 text-green-500" />
+              </div>
+              <h3 className="font-playfair text-3xl sm:text-4xl font-bold text-foreground mb-4">
+                Thank You!
+              </h3>
+              <p className="text-muted-foreground text-lg mb-8 max-w-md mx-auto">
+                Your inquiry has been received. We'll get back to you within 24-48 hours to discuss your event.
+              </p>
+              <Button
+                onClick={() => setIsSubmitted(false)}
+                variant="outline"
+                className="border-primary text-primary hover:bg-primary hover:text-primary-foreground"
+              >
+                Submit Another Inquiry
+              </Button>
+            </div>
+          ) : (
           <div className="bg-card p-8 sm:p-12 rounded-lg border border-border shadow-sm">
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -231,18 +256,40 @@ const Contact = () => {
                     control={form.control}
                     name="eventDate"
                     render={({ field }) => (
-                      <FormItem>
+                      <FormItem className="flex flex-col">
                         <FormLabel className="text-foreground">
                           Estimated Event Dates <span className="text-destructive">*</span>
                         </FormLabel>
-                        <FormControl>
-                          <Input 
-                            type="date"
-                            min={`${new Date().getFullYear()}-${String(new Date().getMonth() + 1).padStart(2, "0")}-${String(new Date().getDate()).padStart(2, "0")}`}
-                            className="bg-background border-input"
-                            {...field} 
-                          />
-                        </FormControl>
+                        <Popover>
+                          <PopoverTrigger asChild>
+                            <FormControl>
+                              <Button
+                                variant="outline"
+                                className={cn(
+                                  "w-full pl-3 text-left font-normal bg-background border-input",
+                                  !field.value && "text-muted-foreground"
+                                )}
+                              >
+                                {field.value ? format(field.value, "PPP") : <span>Pick a date</span>}
+                                <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                              </Button>
+                            </FormControl>
+                          </PopoverTrigger>
+                          <PopoverContent className="w-auto p-0" align="start">
+                            <Calendar
+                              mode="single"
+                              selected={field.value}
+                              onSelect={field.onChange}
+                              disabled={(date) => {
+                                const today = new Date();
+                                today.setHours(0, 0, 0, 0);
+                                return date < today;
+                              }}
+                              initialFocus
+                              className="p-3 pointer-events-auto"
+                            />
+                          </PopoverContent>
+                        </Popover>
                         <FormMessage />
                       </FormItem>
                     )}
@@ -368,6 +415,7 @@ const Contact = () => {
               </form>
             </Form>
           </div>
+          )}
         </div>
       </div>
     </section>
