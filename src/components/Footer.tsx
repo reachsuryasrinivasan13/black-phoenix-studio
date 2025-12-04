@@ -2,7 +2,7 @@ import { Instagram, Facebook, Twitter, MapPin } from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-  const googleMapsUrl = "https://maps.google.com/?q=Chennai,India";
+  const googleMapsUrl = "https://maps.google.com/?q=Black+Phoenix+Photography+Studio,T.+Nagar,Chennai,Tamil+Nadu+600017";
 
   return (
     <footer className="bg-secondary border-t border-border py-12">
