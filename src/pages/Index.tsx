@@ -58,76 +58,82 @@ const Index = () => {
       </section>
 
       {/* Modern Approach Section */}
-      <section className="py-12 sm:py-20 bg-[#E8E3DA] relative overflow-hidden">
+      <section className="py-16 sm:py-24 bg-[#E8E3DA] relative overflow-hidden">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto">
             {/* Heading - Centered at Top */}
             <ScrollAnimation direction="fade" delay={0.1}>
-              <div className="text-center mb-8 lg:mb-12">
-                <h2 className="font-playfair text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground tracking-[0.2em] leading-tight">
-                  A MODERN APPROACH
+              <div className="text-center mb-10 lg:mb-16">
+                <h2 className="font-playfair text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-foreground tracking-[0.15em] leading-tight uppercase">
+                  A Modern Approach
                 </h2>
-                <p className="font-playfair text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-light italic text-foreground mt-1 lg:mt-2">
-                  to an <span className="font-bold not-italic tracking-[0.2em]">AGE OLD TRADITION</span>
+                <p className="font-playfair text-xl sm:text-2xl lg:text-3xl xl:text-4xl text-foreground mt-1">
+                  <span className="italic font-light">to an</span>{" "}
+                  <span className="font-bold uppercase tracking-[0.15em]">Age Old Tradition</span>
                 </p>
               </div>
             </ScrollAnimation>
 
-            {/* Mobile Layout: Stacked Images and Text */}
-            <div className="lg:hidden space-y-6">
-              <div className="relative aspect-[3/4] overflow-hidden">
-                <LazyImage
-                  src={modernApproach}
-                  alt="Modern photography approach"
-                  className="h-full w-full object-cover"
-                />
+            {/* Mobile Layout */}
+            <div className="lg:hidden">
+              {/* Two Images Side by Side */}
+              <div className="grid grid-cols-2 gap-3 mb-6">
+                <div className="aspect-[3/4] overflow-hidden">
+                  <LazyImage
+                    src={modernApproach}
+                    alt="Modern photography approach"
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+                <div className="aspect-square overflow-hidden self-start">
+                  <LazyImage
+                    src={modernApproach}
+                    alt="Wedding photography tradition"
+                    className="h-full w-full object-cover"
+                  />
+                </div>
               </div>
 
-              <div className="space-y-4 text-foreground/80 text-sm leading-relaxed px-4">
+              {/* Text Content */}
+              <div className="space-y-4 text-foreground/80 text-sm leading-relaxed">
                 <p>
-                  Considered to be the epitome of Modern Photography and Filmmaking, HOTC has transformed the Indian Wedding landscape on a regular basis. For almost a decade House On The Clouds has been creating photographs and films which are timeless and have been etched in memories of thousands of people forever.
+                  Considered to be the epitome of Modern Photography and Filmmaking, Black Phoenix has transformed the Indian Wedding landscape on a regular basis. For almost a decade we have been creating photographs and films which are timeless and have been etched in memories of thousands of people forever.
                 </p>
                 <p>
-                  Awarded as the Wedding Filmmaker of the year for four consecutive years at the Weddingsutra awards along with numerous other awards HOTC is the only company listed on IMDB for its award winning films.
+                  Awarded as the Wedding Filmmaker of the year for four consecutive years at the Weddingsutra awards along with numerous other awards, Black Phoenix is the only company listed on IMDB for its award winning films.
                 </p>
-              </div>
-
-              <div className="relative aspect-[4/3] overflow-hidden">
-                <LazyImage
-                  src={modernApproach}
-                  alt="Wedding photography tradition"
-                  className="h-full w-full object-cover"
-                />
               </div>
             </div>
 
-            {/* Desktop Layout: 3 Columns (Image | Text | Images Stack) */}
-            <div className="hidden lg:grid lg:grid-cols-[1fr_1.5fr_1fr] lg:gap-8 xl:gap-12 lg:items-start">
-              {/* Left Image */}
-              <div className="relative aspect-[3/4] overflow-hidden">
-                <LazyImage
-                  src={modernApproach}
-                  alt="Modern photography approach"
-                  className="h-full w-full object-cover"
-                />
+            {/* Desktop Layout: 3 Columns */}
+            <div className="hidden lg:grid lg:grid-cols-[1fr_1.2fr_1fr] lg:gap-8 xl:gap-12 items-start">
+              {/* Left Image - Portrait, shifted up */}
+              <div className="relative -mt-8">
+                <div className="aspect-[3/4] overflow-hidden">
+                  <LazyImage
+                    src={modernApproach}
+                    alt="Modern photography approach"
+                    className="h-full w-full object-cover"
+                  />
+                </div>
               </div>
 
               {/* Center Text */}
-              <div className="flex items-center">
+              <div className="pt-8">
                 <div className="space-y-6 text-foreground/80 text-sm xl:text-base leading-relaxed">
                   <p>
-                    Considered to be the epitome of Modern Photography and Filmmaking, HOTC has transformed the Indian Wedding landscape on a regular basis. For almost a decade House On The Clouds has been creating photographs and films which are timeless and have been etched in memories of thousands of people forever.
+                    Considered to be the epitome of Modern Photography and Filmmaking, Black Phoenix has transformed the Indian Wedding landscape on a regular basis. For almost a decade we have been creating photographs and films which are timeless and have been etched in memories of thousands of people forever.
                   </p>
                   <p>
-                    Awarded as the Wedding Filmmaker of the year for four consecutive years at the Weddingsutra awards along with numerous other awards HOTC is the only company listed on IMDB for its award winning films.
+                    Awarded as the Wedding Filmmaker of the year for four consecutive years at the Weddingsutra awards along with numerous other awards, Black Phoenix is the only company listed on IMDB for its award winning films.
                   </p>
                 </div>
               </div>
 
-              {/* Right Side - Two Stacked Images */}
-              <div className="space-y-4 relative">
-                {/* Top Right Corner Image - Smaller */}
-                <div className="relative aspect-[4/3] overflow-hidden ml-auto w-3/4">
+              {/* Right Side - Two Images */}
+              <div className="space-y-4">
+                {/* Top Right - Small landscape */}
+                <div className="aspect-[4/3] overflow-hidden ml-auto w-4/5">
                   <LazyImage
                     src={modernApproach}
                     alt="Wedding photography detail"
@@ -135,8 +141,8 @@ const Index = () => {
                   />
                 </div>
                 
-                {/* Bottom Right Image - Larger */}
-                <div className="relative aspect-[4/3] overflow-hidden">
+                {/* Bottom - Larger landscape */}
+                <div className="aspect-[4/3] overflow-hidden">
                   <LazyImage
                     src={modernApproach}
                     alt="Wedding photography tradition"
@@ -147,12 +153,12 @@ const Index = () => {
             </div>
 
             {/* Magazine Logos */}
-            <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-8 lg:gap-12 mt-12 lg:mt-16 opacity-60">
-              <span className="font-serif text-xl sm:text-2xl xl:text-3xl tracking-wider">VOGUE</span>
-              <span className="font-bold text-lg sm:text-xl xl:text-2xl tracking-wide">COSMOPOLITAN</span>
-              <span className="font-bold text-lg sm:text-xl xl:text-2xl border-2 border-current px-3 py-1">HELLO!</span>
-              <span className="font-serif text-xl sm:text-2xl xl:text-3xl tracking-wider">BRIDES<span className="text-xs align-super">TODAY</span></span>
-              <span className="font-bold text-base sm:text-lg xl:text-xl border-2 border-current px-3 py-1">TRAVEL+LEISURE</span>
+            <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 lg:gap-10 mt-12 lg:mt-20 opacity-70">
+              <span className="font-serif text-lg sm:text-xl xl:text-2xl tracking-wider font-medium">VOGUE</span>
+              <span className="font-bold text-base sm:text-lg xl:text-xl tracking-wide">COSMOPOLITAN</span>
+              <span className="font-bold text-sm sm:text-base xl:text-lg border-2 border-current px-2 py-0.5">HELLO!</span>
+              <span className="font-serif text-lg sm:text-xl xl:text-2xl tracking-wider">BRIDES<span className="text-[10px] align-super">TODAY</span></span>
+              <span className="font-bold text-xs sm:text-sm xl:text-base tracking-tight">TRAVEL+LEISURE</span>
             </div>
           </div>
         </div>
