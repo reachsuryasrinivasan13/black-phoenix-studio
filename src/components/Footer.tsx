@@ -1,7 +1,8 @@
-import { Instagram, Facebook, Twitter } from "lucide-react";
+import { Instagram, Facebook, Twitter, MapPin } from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const googleMapsUrl = "https://maps.google.com/?q=Chennai,India";
 
   return (
     <footer className="bg-secondary border-t border-border py-12">
@@ -43,6 +44,15 @@ const Footer = () => {
               aria-label="Twitter"
             >
               <Twitter className="h-6 w-6" />
+            </a>
+            <a
+              href={googleMapsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted-foreground hover:text-primary transition-colors"
+              aria-label="Location"
+            >
+              <MapPin className="h-6 w-6" />
             </a>
           </div>
         </div>
