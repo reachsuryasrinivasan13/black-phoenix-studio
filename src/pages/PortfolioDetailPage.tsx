@@ -1,5 +1,5 @@
 import { useParams, Link } from "react-router-dom";
-import { ArrowLeft, ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { LazyImage } from "@/components/LazyImage";
@@ -211,15 +211,7 @@ const PortfolioDetailPage = () => {
 
       {/* Header Section */}
       <section className="pt-32 pb-12 bg-secondary">
-        <div className="max-w-3xl mx-auto px-8 sm:px-12 lg:px-16">
-          <Link 
-            to="/portfolio" 
-            className="inline-flex items-center text-muted-foreground hover:text-primary transition-colors mb-8"
-          >
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Back to Portfolio
-          </Link>
-          
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <Badge variant="secondary" className="mb-4">{portfolio.category}</Badge>
             <h1 className="font-playfair text-5xl sm:text-6xl md:text-7xl font-bold text-foreground mb-6">
@@ -230,7 +222,7 @@ const PortfolioDetailPage = () => {
               <span>•</span>
               <span>{portfolio.location}</span>
             </div>
-            <p className="text-lg text-muted-foreground leading-relaxed">
+            <p className="text-lg text-muted-foreground leading-relaxed max-w-3xl mx-auto">
               {portfolio.description}
             </p>
           </div>
@@ -239,7 +231,7 @@ const PortfolioDetailPage = () => {
 
       {/* Details Section */}
       <section className="py-12 bg-background">
-        <div className="max-w-3xl mx-auto px-8 sm:px-12 lg:px-16">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-2">
             {portfolio.details.map((detail: string, index: number) => (
               <p key={index} className="text-muted-foreground">
@@ -252,7 +244,7 @@ const PortfolioDetailPage = () => {
 
       {/* Images Grid - Single Column */}
       <section className="py-12 bg-background">
-        <div className="max-w-3xl mx-auto px-8 sm:px-12 lg:px-16">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="space-y-6">
             {allImages.map((image, index) => (
               <div key={index} className="w-full overflow-hidden">
