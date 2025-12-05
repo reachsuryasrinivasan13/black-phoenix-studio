@@ -1,10 +1,10 @@
 import { useParams, Link } from "react-router-dom";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { useState, useEffect } from "react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { LazyImage } from "@/components/LazyImage";
 import { Badge } from "@/components/ui/badge";
+import { ScrollAnimation } from "@/components/ScrollAnimation";
 // Priya & Rahul images
 import priya1 from "@/assets/portfolio/priyaAndRahul/image-1.jpg";
 import priya2 from "@/assets/portfolio/priyaAndRahul/image-2.jpg";
@@ -243,38 +243,26 @@ const PortfolioDetailPage = () => {
         </div>
       </section>
 
-      {/* Images Gallery - Dynamic Widths */}
+      {/* Images Gallery - Centered with Auto Size */}
       <section className="py-12 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="space-y-8">
-            {allImages.map((image, index) => {
-              // Alternate between different width/alignment patterns
-              const patterns = [
-                { width: "max-w-4xl", align: "mx-auto" },           // Centered medium
-                { width: "max-w-3xl", align: "ml-auto mr-0" },      // Right aligned small
-                { width: "max-w-5xl", align: "mx-auto" },           // Centered large
-                { width: "max-w-3xl", align: "mr-auto ml-0" },      // Left aligned small
-                { width: "max-w-6xl", align: "mx-auto" },           // Centered full
-                { width: "max-w-2xl", align: "ml-auto mr-0" },      // Right aligned smaller
-                { width: "max-w-4xl", align: "mr-auto ml-0" },      // Left aligned medium
-                { width: "max-w-5xl", align: "mx-auto" },           // Centered large
-              ];
-              const pattern = patterns[index % patterns.length];
-              
-              return (
-                <div 
-                  key={index} 
-                  className={`${pattern.width} ${pattern.align} overflow-hidden`}
-                  style={{ minWidth: "40%" }}
-                >
+          <div className="flex flex-col items-center space-y-8">
+            {allImages.map((image, index) => (
+              <ScrollAnimation 
+                key={index} 
+                delay={0.1}
+                direction="up"
+                className="w-full flex justify-center"
+              >
+                <div className="overflow-hidden">
                   <LazyImage
                     src={image}
                     alt={`${portfolio.title} - Photo ${index + 1}`}
-                    className="w-full h-auto object-cover hover:scale-[1.02] transition-transform duration-700"
+                    className="w-auto h-auto max-w-full max-h-[90vh] object-contain hover:scale-[1.02] transition-transform duration-700"
                   />
                 </div>
-              );
-            })}
+              </ScrollAnimation>
+            ))}
           </div>
         </div>
       </section>
