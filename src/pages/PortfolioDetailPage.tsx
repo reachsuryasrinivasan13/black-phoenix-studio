@@ -1,9 +1,11 @@
 import { useParams, Link } from "react-router-dom";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useState, useEffect, useRef, useCallback } from "react";
+import { ChevronLeft, ChevronRight, Loader2 } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Badge } from "@/components/ui/badge";
 import { ParallaxImage } from "@/components/ParallaxImage";
+
 // Priya & Rahul images
 import priya1 from "@/assets/portfolio/priyaAndRahul/image-1.jpg";
 import priya2 from "@/assets/portfolio/priyaAndRahul/image-2.jpg";
@@ -82,8 +84,13 @@ import deepika2 from "@/assets/portfolio/deepikaAndRanveer/image-2.jpg";
 import priyanka1 from "@/assets/portfolio/priyankaAndNick/image-1.jpg";
 import priyanka2 from "@/assets/portfolio/priyankaAndNick/image-2.jpg";
 
+const IMAGES_PER_LOAD = 5;
+
 const PortfolioDetailPage = () => {
   const { id } = useParams();
+  const [visibleCount, setVisibleCount] = useState(IMAGES_PER_LOAD);
+  const [isLoading, setIsLoading] = useState(false);
+  const loaderRef = useRef<HTMLDivElement>(null);
 
   const portfolioData: Record<string, any> = {
     "priya-rahul": {
@@ -186,6 +193,41 @@ const PortfolioDetailPage = () => {
   const nextPortfolio = currentIndex < portfolioOrder.length - 1 ? portfolioOrder[currentIndex + 1] : null;
 
   const portfolio = id ? portfolioData[id] : null;
+  const allImages = portfolio?.images || [];
+
+  // Reset visible count when portfolio changes
+  useEffect(() => {
+    setVisibleCount(IMAGES_PER_LOAD);
+  }, [id]);
+
+  // Infinite scroll handler
+  const loadMore = useCallback(() => {
+    if (isLoading || visibleCount >= allImages.length) return;
+    
+    setIsLoading(true);
+    setTimeout(() => {
+      setVisibleCount(prev => Math.min(prev + IMAGES_PER_LOAD, allImages.length));
+      setIsLoading(false);
+    }, 500);
+  }, [isLoading, visibleCount, allImages.length]);
+
+  // Intersection observer for infinite scroll
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          loadMore();
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (loaderRef.current) {
+      observer.observe(loaderRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [loadMore]);
 
   if (!portfolio) {
     return (
@@ -202,8 +244,8 @@ const PortfolioDetailPage = () => {
     );
   }
 
-  // Use all 20 images from the portfolio
-  const allImages = portfolio.images;
+  const visibleImages = allImages.slice(0, visibleCount);
+  const hasMore = visibleCount < allImages.length;
 
   return (
     <div className="min-h-screen bg-background">
@@ -242,11 +284,11 @@ const PortfolioDetailPage = () => {
         </div>
       </section>
 
-      {/* Images Gallery - Parallax Effect */}
+      {/* Images Gallery - Infinite Scroll with Parallax Effect */}
       <section className="py-12 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col items-center space-y-16">
-            {allImages.map((image, index) => (
+            {visibleImages.map((image, index) => (
               <ParallaxImage
                 key={index}
                 src={image}
@@ -255,6 +297,23 @@ const PortfolioDetailPage = () => {
               />
             ))}
           </div>
+          
+          {/* Loading Indicator */}
+          {hasMore && (
+            <div 
+              ref={loaderRef} 
+              className="flex justify-center items-center py-16"
+            >
+              {isLoading ? (
+                <div className="flex items-center gap-3 text-muted-foreground">
+                  <Loader2 className="h-6 w-6 animate-spin" />
+                  <span>Loading more photos...</span>
+                </div>
+              ) : (
+                <div className="h-8" />
+              )}
+            </div>
+          )}
         </div>
       </section>
 
