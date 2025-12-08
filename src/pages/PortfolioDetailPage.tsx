@@ -2,9 +2,8 @@ import { useParams, Link } from "react-router-dom";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import { LazyImage } from "@/components/LazyImage";
 import { Badge } from "@/components/ui/badge";
-import { ScrollAnimation } from "@/components/ScrollAnimation";
+import { ParallaxImage } from "@/components/ParallaxImage";
 // Priya & Rahul images
 import priya1 from "@/assets/portfolio/priyaAndRahul/image-1.jpg";
 import priya2 from "@/assets/portfolio/priyaAndRahul/image-2.jpg";
@@ -243,25 +242,17 @@ const PortfolioDetailPage = () => {
         </div>
       </section>
 
-      {/* Images Gallery - Centered with Auto Size */}
+      {/* Images Gallery - Parallax Effect */}
       <section className="py-12 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col items-center space-y-8">
+          <div className="flex flex-col items-center space-y-16">
             {allImages.map((image, index) => (
-              <ScrollAnimation 
-                key={index} 
-                delay={0.1}
-                direction="up"
-                className="w-full flex justify-center"
-              >
-                <div className="overflow-hidden">
-                  <LazyImage
-                    src={image}
-                    alt={`${portfolio.title} - Photo ${index + 1}`}
-                    className="w-auto h-auto max-w-full max-h-[90vh] object-contain hover:scale-[1.02] transition-transform duration-700"
-                  />
-                </div>
-              </ScrollAnimation>
+              <ParallaxImage
+                key={index}
+                src={image}
+                alt={`${portfolio.title} - Photo ${index + 1}`}
+                className="w-auto h-auto max-w-full max-h-[90vh] object-contain"
+              />
             ))}
           </div>
         </div>
