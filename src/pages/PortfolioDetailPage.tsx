@@ -1,10 +1,12 @@
 import { useParams, Link } from "react-router-dom";
+import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { LazyImage } from "@/components/LazyImage";
 import { Badge } from "@/components/ui/badge";
 import { ScrollAnimation } from "@/components/ScrollAnimation";
+import { Lightbox } from "@/components/Lightbox";
 // Priya & Rahul images
 import priya1 from "@/assets/portfolio/priyaAndRahul/image-1.jpg";
 import priya2 from "@/assets/portfolio/priyaAndRahul/image-2.jpg";
@@ -85,6 +87,8 @@ import priyanka2 from "@/assets/portfolio/priyankaAndNick/image-2.jpg";
 
 const PortfolioDetailPage = () => {
   const { id } = useParams();
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const portfolioData: Record<string, any> = {
     "priya-rahul": {
@@ -254,7 +258,13 @@ const PortfolioDetailPage = () => {
                 direction="up"
                 className="w-full flex justify-center"
               >
-                <div className="overflow-hidden">
+                <div 
+                  className="overflow-hidden cursor-pointer"
+                  onClick={() => {
+                    setCurrentImageIndex(index);
+                    setLightboxOpen(true);
+                  }}
+                >
                   <LazyImage
                     src={image}
                     alt={`${portfolio.title} - Photo ${index + 1}`}
@@ -266,6 +276,16 @@ const PortfolioDetailPage = () => {
           </div>
         </div>
       </section>
+
+      {/* Lightbox */}
+      <Lightbox
+        images={allImages}
+        currentIndex={currentImageIndex}
+        isOpen={lightboxOpen}
+        onClose={() => setLightboxOpen(false)}
+        onNext={() => setCurrentImageIndex((prev) => Math.min(prev + 1, allImages.length - 1))}
+        onPrevious={() => setCurrentImageIndex((prev) => Math.max(prev - 1, 0))}
+      />
 
       {/* Navigation Section */}
       <section className="py-8 bg-secondary border-t border-border">
