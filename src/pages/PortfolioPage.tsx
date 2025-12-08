@@ -86,7 +86,7 @@ const PortfolioPage = () => {
                 to={`/portfolio/${item.id}`}
                 className="group"
               >
-                <div className="relative aspect-[3/4] overflow-hidden rounded-lg mb-4">
+                <div className="relative aspect-[3/4] overflow-hidden mb-4">
                   <LazyImage
                     src={item.src}
                     alt={item.alt}

@@ -1,8 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { LazyImage } from "@/components/LazyImage";
-import { ScrollAnimation } from "@/components/ScrollAnimation";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 
 // Import editorial images
@@ -33,6 +32,8 @@ import editorial24 from "@/assets/editorial/editorial-24.jpg";
 
 const EditorialPage = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
+  const [columnHeights, setColumnHeights] = useState<number[]>([]);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const editorialImages = [
     editorial1, editorial2, editorial3, editorial4, editorial5, editorial6,
@@ -40,6 +41,43 @@ const EditorialPage = () => {
     editorial13, editorial14, editorial15, editorial16, editorial17, editorial18,
     editorial19, editorial20, editorial21, editorial22, editorial23, editorial24
   ];
+
+  // Calculate columns based on screen size
+  const getColumnCount = useCallback(() => {
+    if (typeof window === 'undefined') return 4;
+    if (window.innerWidth < 640) return 2;
+    if (window.innerWidth < 768) return 3;
+    if (window.innerWidth < 1024) return 4;
+    return 5;
+  }, []);
+
+  const [columnCount, setColumnCount] = useState(getColumnCount());
+
+  useEffect(() => {
+    const handleResize = () => {
+      setColumnCount(getColumnCount());
+    };
+    
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [getColumnCount]);
+
+  // Distribute images into columns (masonry layout)
+  const getColumns = useCallback(() => {
+    const columns: string[][] = Array.from({ length: columnCount }, () => []);
+    const heights: number[] = Array(columnCount).fill(0);
+    
+    // Assign random heights for masonry effect
+    const imageHeights = [200, 250, 300, 350, 280, 320];
+    
+    editorialImages.forEach((img, index) => {
+      const shortestColumn = heights.indexOf(Math.min(...heights));
+      columns[shortestColumn].push(img);
+      heights[shortestColumn] += imageHeights[index % imageHeights.length];
+    });
+    
+    return columns;
+  }, [columnCount, editorialImages]);
 
   const handlePrevious = () => {
     if (selectedImage !== null) {
@@ -59,6 +97,8 @@ const EditorialPage = () => {
     if (e.key === "Escape") setSelectedImage(null);
   };
 
+  const getImageIndex = (img: string) => editorialImages.indexOf(img);
+
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
@@ -66,34 +106,43 @@ const EditorialPage = () => {
       {/* Hero Section */}
       <section className="pt-28 pb-12 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <ScrollAnimation direction="fade">
-            <div className="text-center max-w-4xl mx-auto">
-              <h1 className="font-playfair text-5xl sm:text-6xl md:text-7xl font-bold text-foreground mb-6">
-                Editorial
-              </h1>
-              <p className="text-muted-foreground text-lg leading-relaxed">
-                A curated collection of fashion and lifestyle editorial photography showcasing our artistic vision and creative storytelling.
-              </p>
-            </div>
-          </ScrollAnimation>
+          <div className="text-center max-w-4xl mx-auto">
+            <h1 className="font-playfair text-5xl sm:text-6xl md:text-7xl font-bold text-foreground mb-6">
+              Editorial
+            </h1>
+            <p className="text-muted-foreground text-lg leading-relaxed">
+              A curated collection of fashion and lifestyle editorial photography showcasing our artistic vision and creative storytelling.
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* Editorial Grid - 6 Columns with 2px margins like Iconic */}
+      {/* Masonry Grid */}
       <section className="pb-20 bg-background">
-        <div className="px-[2px]">
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-[2px]">
-            {editorialImages.map((img, index) => (
-              <div 
-                key={index} 
-                className="aspect-[3/4] overflow-hidden cursor-pointer group"
-                onClick={() => setSelectedImage(index)}
-              >
-                <LazyImage
-                  src={img}
-                  alt={`Editorial ${index + 1}`}
-                  className="h-full w-full object-cover hover:scale-110 transition-transform duration-700"
-                />
+        <div className="px-2 sm:px-4 lg:px-8" ref={containerRef}>
+          <div className="flex gap-2 sm:gap-3 lg:gap-4">
+            {getColumns().map((column, colIndex) => (
+              <div key={colIndex} className="flex-1 flex flex-col gap-2 sm:gap-3 lg:gap-4">
+                {column.map((img, imgIndex) => {
+                  const globalIndex = getImageIndex(img);
+                  // Varying aspect ratios for masonry effect
+                  const aspectRatios = ['aspect-[3/4]', 'aspect-[2/3]', 'aspect-[4/5]', 'aspect-square', 'aspect-[3/5]'];
+                  const aspectRatio = aspectRatios[(colIndex + imgIndex) % aspectRatios.length];
+                  
+                  return (
+                    <div 
+                      key={`${colIndex}-${imgIndex}`}
+                      className={`${aspectRatio} overflow-hidden cursor-pointer group`}
+                      onClick={() => setSelectedImage(globalIndex)}
+                    >
+                      <LazyImage
+                        src={img}
+                        alt={`Editorial ${globalIndex + 1}`}
+                        className="h-full w-full object-cover hover:scale-110 transition-transform duration-700"
+                      />
+                    </div>
+                  );
+                })}
               </div>
             ))}
           </div>
