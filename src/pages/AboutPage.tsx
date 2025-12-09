@@ -1,6 +1,7 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { LazyImage } from "@/components/LazyImage";
+import { ScrollAnimation } from "@/components/ScrollAnimation";
 import aboutBanner from "@/assets/banner/about-banner.jpg";
 import sunilPhoto from "@/assets/about/sunil-photo.jpg";
 import narasimmanPhoto from "@/assets/about/narasimman-photo.jpg";
@@ -36,14 +37,16 @@ const AboutPage = () => {
             className="h-full w-full object-cover"
           />
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="text-center">
-              <h1 className="font-playfair text-5xl sm:text-6xl md:text-7xl font-bold text-foreground mb-4">
-                About Us
-              </h1>
-              <p className="text-foreground text-xl">
-                Capturing timeless moments with passion and precision
-              </p>
-            </div>
+            <ScrollAnimation direction="fade">
+              <div className="text-center">
+                <h1 className="font-playfair text-5xl sm:text-6xl md:text-7xl font-bold text-foreground mb-4">
+                  About Us
+                </h1>
+                <p className="text-foreground text-xl">
+                  Capturing timeless moments with passion and precision
+                </p>
+              </div>
+            </ScrollAnimation>
           </div>
         </div>
       </section>
@@ -51,72 +54,78 @@ const AboutPage = () => {
       {/* Company Story */}
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto text-center space-y-6 text-muted-foreground text-lg">
-            <p>
-              Black Phoenix Photography is dedicated to capturing the essence of modern photography 
-              and filmmaking. We specialize in creating photographs and films that are timeless and 
-              have been etched in the memories of countless people forever.
-            </p>
-            <p>
-              Our approach combines artistic vision with technical excellence, delivering stunning 
-              visuals that tell your unique story. From intimate moments to grand celebrations, 
-              we document every precious detail with passion and precision.
-            </p>
-            <p>
-              We celebrate authenticity and creativity, working with clients who aren't afraid to 
-              express their true selves. Our goal is to create images that not only capture moments 
-              but evoke the emotions and atmosphere of your special day.
-            </p>
-          </div>
+          <ScrollAnimation direction="up">
+            <div className="max-w-4xl mx-auto text-center space-y-6 text-muted-foreground text-lg">
+              <p>
+                Black Phoenix Photography is dedicated to capturing the essence of modern photography 
+                and filmmaking. We specialize in creating photographs and films that are timeless and 
+                have been etched in the memories of countless people forever.
+              </p>
+              <p>
+                Our approach combines artistic vision with technical excellence, delivering stunning 
+                visuals that tell your unique story. From intimate moments to grand celebrations, 
+                we document every precious detail with passion and precision.
+              </p>
+              <p>
+                We celebrate authenticity and creativity, working with clients who aren't afraid to 
+                express their true selves. Our goal is to create images that not only capture moments 
+                but evoke the emotions and atmosphere of your special day.
+              </p>
+            </div>
+          </ScrollAnimation>
         </div>
       </section>
 
       {/* Team Section */}
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="font-playfair text-4xl sm:text-5xl font-bold text-center text-foreground mb-16">
-            Meet Our Team
-          </h2>
+          <ScrollAnimation direction="fade">
+            <h2 className="font-playfair text-4xl sm:text-5xl font-bold text-center text-foreground mb-16">
+              Meet Our Team
+            </h2>
+          </ScrollAnimation>
           <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
-            {team.map((member) => (
-              <div key={member.name} className="bg-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
-                {/* Photo Section */}
-                <div className="aspect-[4/5] overflow-hidden">
-                  <LazyImage
-                    src={member.photo}
-                    alt={`${member.name} - ${member.role}`}
-                    className="h-full w-full object-cover hover:scale-105 transition-transform duration-500"
-                  />
-                </div>
-                
-                {/* Content Section */}
-                <div className="p-8">
-                  <div className="mb-6">
-                    <h3 className="font-playfair text-3xl font-bold text-foreground mb-2">
-                      {member.name}
-                    </h3>
-                    <p className="text-primary text-lg font-medium">
-                      {member.role}
-                    </p>
+            {team.map((member, index) => (
+              <ScrollAnimation key={member.name} direction="up" delay={index * 0.2}>
+                <div className="bg-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+                  {/* Photo Section */}
+                  <div className="aspect-[4/5] overflow-hidden">
+                    <LazyImage
+                      src={member.photo}
+                      alt={`${member.name} - ${member.role}`}
+                      className="h-full w-full object-cover hover:scale-105 transition-transform duration-500"
+                    />
                   </div>
-                  <p className="text-muted-foreground mb-6 leading-relaxed">
-                    {member.description}
-                  </p>
-                  <div>
-                    <h4 className="font-semibold text-foreground mb-3">Expertise:</h4>
-                    <div className="flex flex-wrap gap-2">
-                      {member.expertise.map((skill) => (
-                        <span
-                          key={skill}
-                          className="px-3 py-1 bg-secondary text-foreground text-sm rounded-full border border-border"
-                        >
-                          {skill}
-                        </span>
-                      ))}
+                  
+                  {/* Content Section */}
+                  <div className="p-8">
+                    <div className="mb-6">
+                      <h3 className="font-playfair text-3xl font-bold text-foreground mb-2">
+                        {member.name}
+                      </h3>
+                      <p className="text-primary text-lg font-medium">
+                        {member.role}
+                      </p>
+                    </div>
+                    <p className="text-muted-foreground mb-6 leading-relaxed">
+                      {member.description}
+                    </p>
+                    <div>
+                      <h4 className="font-semibold text-foreground mb-3">Expertise:</h4>
+                      <div className="flex flex-wrap gap-2">
+                        {member.expertise.map((skill) => (
+                          <span
+                            key={skill}
+                            className="px-3 py-1 bg-secondary text-foreground text-sm rounded-full border border-border"
+                          >
+                            {skill}
+                          </span>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              </ScrollAnimation>
             ))}
           </div>
         </div>

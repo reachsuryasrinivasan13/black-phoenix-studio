@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { LazyImage } from "@/components/LazyImage";
+import { ScrollAnimation } from "@/components/ScrollAnimation";
 import portfolio1 from "@/assets/portfolio/priyaAndRahul/image-1.jpg";
 import portfolio2 from "@/assets/portfolio/saraAndJohn/image-1.jpg";
 import portfolio3 from "@/assets/portfolio/aliaAndRanbir/image-1.jpg";
@@ -68,11 +69,13 @@ const PortfolioPage = () => {
       {/* Hero Banner */}
       <section className="pt-32 pb-8 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="font-playfair text-5xl sm:text-6xl md:text-7xl font-bold text-foreground">
-              Photography
-            </h1>
-          </div>
+          <ScrollAnimation direction="fade">
+            <div className="max-w-4xl mx-auto text-center">
+              <h1 className="font-playfair text-5xl sm:text-6xl md:text-7xl font-bold text-foreground">
+                Photography
+              </h1>
+            </div>
+          </ScrollAnimation>
         </div>
       </section>
 
@@ -80,28 +83,29 @@ const PortfolioPage = () => {
       <section className="py-8">
         <div className="bg-card mx-4 sm:mx-8 lg:mx-16 p-8 sm:p-12 lg:p-16 rounded-lg">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
-            {portfolioItems.map((item) => (
-              <Link
-                key={item.id}
-                to={`/portfolio/${item.id}`}
-                className="group"
-              >
-                <div className="relative aspect-[3/4] overflow-hidden mb-4">
-                  <LazyImage
-                    src={item.src}
-                    alt={item.alt}
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <h3 className="font-playfair text-xl font-semibold text-foreground">
-                    {item.title}
-                  </h3>
-                  <p className="text-muted-foreground text-sm line-clamp-2">
-                    {item.excerpt}
-                  </p>
-                </div>
-              </Link>
+            {portfolioItems.map((item, index) => (
+              <ScrollAnimation key={item.id} direction="up" delay={index * 0.1}>
+                <Link
+                  to={`/portfolio/${item.id}`}
+                  className="group"
+                >
+                  <div className="relative aspect-[3/4] overflow-hidden mb-4">
+                    <LazyImage
+                      src={item.src}
+                      alt={item.alt}
+                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <h3 className="font-playfair text-xl font-semibold text-foreground">
+                      {item.title}
+                    </h3>
+                    <p className="text-muted-foreground text-sm line-clamp-2">
+                      {item.excerpt}
+                    </p>
+                  </div>
+                </Link>
+              </ScrollAnimation>
             ))}
           </div>
         </div>

@@ -2,6 +2,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { LazyImage } from "@/components/LazyImage";
+import { ScrollAnimation } from "@/components/ScrollAnimation";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 
 // Import editorial images
@@ -104,25 +105,27 @@ const EditorialPage = () => {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="pt-28 pb-12 bg-background">
+      <section className="pt-28 pb-8 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-4xl mx-auto">
-            <h1 className="font-playfair text-5xl sm:text-6xl md:text-7xl font-bold text-foreground mb-6">
-              Editorial
-            </h1>
-            <p className="text-muted-foreground text-lg leading-relaxed">
-              A curated collection of fashion and lifestyle editorial photography showcasing our artistic vision and creative storytelling.
-            </p>
-          </div>
+          <ScrollAnimation direction="fade">
+            <div className="text-center max-w-4xl mx-auto">
+              <h1 className="font-playfair text-5xl sm:text-6xl md:text-7xl font-bold text-foreground mb-6">
+                Editorial
+              </h1>
+              <p className="text-muted-foreground text-lg leading-relaxed">
+                A curated collection of fashion and lifestyle editorial photography showcasing our artistic vision and creative storytelling.
+              </p>
+            </div>
+          </ScrollAnimation>
         </div>
       </section>
 
       {/* Masonry Grid */}
       <section className="pb-20 bg-background">
-        <div className="px-2 sm:px-4 lg:px-8" ref={containerRef}>
-          <div className="flex gap-2 sm:gap-3 lg:gap-4">
+        <div className="px-1 sm:px-2 lg:px-4" ref={containerRef}>
+          <div className="flex gap-1 sm:gap-1.5 lg:gap-2">
             {getColumns().map((column, colIndex) => (
-              <div key={colIndex} className="flex-1 flex flex-col gap-2 sm:gap-3 lg:gap-4">
+              <div key={colIndex} className="flex-1 flex flex-col gap-1 sm:gap-1.5 lg:gap-2">
                 {column.map((img, imgIndex) => {
                   const globalIndex = getImageIndex(img);
                   // Varying aspect ratios for masonry effect
@@ -130,17 +133,22 @@ const EditorialPage = () => {
                   const aspectRatio = aspectRatios[(colIndex + imgIndex) % aspectRatios.length];
                   
                   return (
-                    <div 
+                    <ScrollAnimation 
                       key={`${colIndex}-${imgIndex}`}
-                      className={`${aspectRatio} overflow-hidden cursor-pointer group`}
-                      onClick={() => setSelectedImage(globalIndex)}
+                      direction="up"
+                      delay={imgIndex * 0.05}
                     >
-                      <LazyImage
-                        src={img}
-                        alt={`Editorial ${globalIndex + 1}`}
-                        className="h-full w-full object-cover hover:scale-110 transition-transform duration-700"
-                      />
-                    </div>
+                      <div 
+                        className={`${aspectRatio} overflow-hidden cursor-pointer group`}
+                        onClick={() => setSelectedImage(globalIndex)}
+                      >
+                        <LazyImage
+                          src={img}
+                          alt={`Editorial ${globalIndex + 1}`}
+                          className="h-full w-full object-cover hover:scale-110 transition-transform duration-700"
+                        />
+                      </div>
+                    </ScrollAnimation>
                   );
                 })}
               </div>

@@ -5,6 +5,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Badge } from "@/components/ui/badge";
 import { ParallaxImage } from "@/components/ParallaxImage";
+import { ScrollAnimation } from "@/components/ScrollAnimation";
 
 // Priya & Rahul images
 import priya1 from "@/assets/portfolio/priyaAndRahul/image-1.jpg";
@@ -254,33 +255,37 @@ const PortfolioDetailPage = () => {
       {/* Header Section */}
       <section className="pt-32 pb-12 bg-secondary">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <Badge variant="secondary" className="mb-4">{portfolio.category}</Badge>
-            <h1 className="font-playfair text-5xl sm:text-6xl md:text-7xl font-bold text-foreground mb-6">
-              {portfolio.title}
-            </h1>
-            <div className="flex items-center justify-center gap-4 text-muted-foreground mb-8">
-              <span>{portfolio.date}</span>
-              <span>•</span>
-              <span>{portfolio.location}</span>
+          <ScrollAnimation direction="fade">
+            <div className="text-center">
+              <Badge variant="secondary" className="mb-4">{portfolio.category}</Badge>
+              <h1 className="font-playfair text-5xl sm:text-6xl md:text-7xl font-bold text-foreground mb-6">
+                {portfolio.title}
+              </h1>
+              <div className="flex items-center justify-center gap-4 text-muted-foreground mb-8">
+                <span>{portfolio.date}</span>
+                <span>•</span>
+                <span>{portfolio.location}</span>
+              </div>
+              <p className="text-lg text-muted-foreground leading-relaxed max-w-3xl mx-auto">
+                {portfolio.description}
+              </p>
             </div>
-            <p className="text-lg text-muted-foreground leading-relaxed max-w-3xl mx-auto">
-              {portfolio.description}
-            </p>
-          </div>
+          </ScrollAnimation>
         </div>
       </section>
 
       {/* Details Section */}
       <section className="py-12 bg-background">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center space-y-2">
-            {portfolio.details.map((detail: string, index: number) => (
-              <p key={index} className="text-muted-foreground">
-                {detail}
-              </p>
-            ))}
-          </div>
+          <ScrollAnimation direction="up" delay={0.2}>
+            <div className="text-center space-y-2">
+              {portfolio.details.map((detail: string, index: number) => (
+                <p key={index} className="text-muted-foreground">
+                  {detail}
+                </p>
+              ))}
+            </div>
+          </ScrollAnimation>
         </div>
       </section>
 
