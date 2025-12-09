@@ -149,10 +149,10 @@ const EditorialPage = () => {
         </div>
       </section>
 
-      {/* Image Viewer Modal */}
+      {/* Image Viewer Modal with Thumbnail Strip */}
       {selectedImage !== null && (
         <div 
-          className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center"
+          className="fixed inset-0 z-50 bg-black/95 flex flex-col"
           onKeyDown={handleKeyDown}
           tabIndex={0}
         >
@@ -165,35 +165,61 @@ const EditorialPage = () => {
             <X className="h-8 w-8" />
           </button>
 
-          {/* Previous Button */}
-          <button
-            onClick={handlePrevious}
-            className="absolute left-4 top-1/2 -translate-y-1/2 text-white hover:text-white/70 transition-colors z-10"
-            aria-label="Previous image"
-          >
-            <ChevronLeft className="h-12 w-12" />
-          </button>
+          {/* Main Image Area */}
+          <div className="flex-1 flex items-center justify-center relative">
+            {/* Previous Button */}
+            <button
+              onClick={handlePrevious}
+              className="absolute left-4 top-1/2 -translate-y-1/2 text-white hover:text-white/70 transition-colors z-10"
+              aria-label="Previous image"
+            >
+              <ChevronLeft className="h-12 w-12" />
+            </button>
 
-          {/* Image */}
-          <div className="max-w-7xl max-h-[90vh] px-16">
-            <img
-              src={editorialImages[selectedImage]}
-              alt={`Editorial ${selectedImage + 1}`}
-              className="max-w-full max-h-[90vh] object-contain"
-            />
+            {/* Image */}
+            <div className="max-w-7xl max-h-[calc(100vh-140px)] px-16">
+              <img
+                src={editorialImages[selectedImage]}
+                alt={`Editorial ${selectedImage + 1}`}
+                className="max-w-full max-h-[calc(100vh-140px)] object-contain"
+              />
+            </div>
+
+            {/* Next Button */}
+            <button
+              onClick={handleNext}
+              className="absolute right-4 top-1/2 -translate-y-1/2 text-white hover:text-white/70 transition-colors z-10"
+              aria-label="Next image"
+            >
+              <ChevronRight className="h-12 w-12" />
+            </button>
           </div>
 
-          {/* Next Button */}
-          <button
-            onClick={handleNext}
-            className="absolute right-4 top-1/2 -translate-y-1/2 text-white hover:text-white/70 transition-colors z-10"
-            aria-label="Next image"
-          >
-            <ChevronRight className="h-12 w-12" />
-          </button>
+          {/* Thumbnail Strip */}
+          <div className="h-24 bg-black/80 border-t border-white/10 px-4 py-2 overflow-x-auto">
+            <div className="flex gap-2 h-full justify-center">
+              {editorialImages.map((img, index) => (
+                <button
+                  key={index}
+                  onClick={() => setSelectedImage(index)}
+                  className={`h-full aspect-[3/4] flex-shrink-0 overflow-hidden transition-all duration-200 ${
+                    selectedImage === index 
+                      ? "ring-2 ring-white opacity-100" 
+                      : "opacity-50 hover:opacity-80"
+                  }`}
+                >
+                  <img
+                    src={img}
+                    alt={`Thumbnail ${index + 1}`}
+                    className="h-full w-full object-cover"
+                  />
+                </button>
+              ))}
+            </div>
+          </div>
 
           {/* Image Counter */}
-          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white text-sm">
+          <div className="absolute bottom-28 left-1/2 -translate-x-1/2 text-white text-sm">
             {selectedImage + 1} / {editorialImages.length}
           </div>
         </div>
