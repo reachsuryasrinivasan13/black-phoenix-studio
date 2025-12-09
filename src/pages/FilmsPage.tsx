@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import { Link } from "react-router-dom";
 import { LazyImage } from "@/components/LazyImage";
 import { LazyVideo } from "@/components/LazyVideo";
+import { ScrollAnimation } from "@/components/ScrollAnimation";
 import { Play } from "lucide-react";
 import filmsBanner from "@/assets/films/films-hero-video.jpg";
 import portfolio1 from "@/assets/portfolio/priyaAndRahul/image-1.jpg";
@@ -56,56 +57,59 @@ const FilmsPage = () => {
       
       {/* Hero Banner with Video */}
       <section className="relative pt-20">
-        <div className="relative h-[70vh] min-h-[600px] overflow-hidden">
-          <LazyVideo
-            src={filmsBanner}
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="h-full w-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-background/40 to-background flex items-center justify-start px-8 sm:px-16 lg:px-24">
-            <h1 className="font-playfair text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-light italic text-white">
-              Inspired by Cinema.
-            </h1>
+        <ScrollAnimation direction="fade">
+          <div className="relative h-[70vh] min-h-[600px] overflow-hidden">
+            <LazyVideo
+              src={filmsBanner}
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="h-full w-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-background/40 to-background flex items-center justify-start px-8 sm:px-16 lg:px-24">
+              <h1 className="font-playfair text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-light italic text-white">
+                Inspired by Cinema.
+              </h1>
+            </div>
           </div>
-        </div>
+        </ScrollAnimation>
       </section>
 
       {/* Films Grid */}
       <section className="py-20 bg-secondary">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
-            {films.map((film) => (
-              <Link
-                key={film.id}
-                to={`/films/${film.id}`}
-                className="group"
-              >
-                <div className="relative aspect-[3/4] overflow-hidden mb-4 bg-muted">
-                  <LazyImage
-                    src={film.image}
-                    alt={film.title}
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="w-16 h-16 rounded-full bg-white/20 flex items-center justify-center backdrop-blur-sm">
-                      <Play className="h-8 w-8 text-white ml-1" fill="currentColor" />
+            {films.map((film, index) => (
+              <ScrollAnimation key={film.id} direction="up" delay={index * 0.1}>
+                <Link
+                  to={`/films/${film.id}`}
+                  className="group"
+                >
+                  <div className="relative aspect-[3/4] overflow-hidden mb-4 bg-muted">
+                    <LazyImage
+                      src={film.image}
+                      alt={film.title}
+                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="w-16 h-16 rounded-full bg-white/20 flex items-center justify-center backdrop-blur-sm">
+                        <Play className="h-8 w-8 text-white ml-1" fill="currentColor" />
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div className="space-y-2">
-                  <p className="text-sm text-muted-foreground">{film.category} • {film.date}</p>
-                  <h3 className="font-playfair text-2xl font-semibold text-foreground">
-                    {film.title}
-                  </h3>
-                  <p className="text-muted-foreground">{film.location}</p>
-                  <p className="text-muted-foreground text-sm line-clamp-3 mt-2">
-                    {film.description}
-                  </p>
-                </div>
-              </Link>
+                  <div className="space-y-2">
+                    <p className="text-sm text-muted-foreground">{film.category} • {film.date}</p>
+                    <h3 className="font-playfair text-2xl font-semibold text-foreground">
+                      {film.title}
+                    </h3>
+                    <p className="text-muted-foreground">{film.location}</p>
+                    <p className="text-muted-foreground text-sm line-clamp-3 mt-2">
+                      {film.description}
+                    </p>
+                  </div>
+                </Link>
+              </ScrollAnimation>
             ))}
           </div>
         </div>
