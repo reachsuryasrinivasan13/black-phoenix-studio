@@ -1,6 +1,5 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { LazyImage } from "./LazyImage";
 
 interface ParallaxImageProps {
   src: string;
@@ -10,6 +9,7 @@ interface ParallaxImageProps {
 
 export const ParallaxImage = ({ src, alt, className = "" }: ParallaxImageProps) => {
   const ref = useRef<HTMLDivElement>(null);
+  const [isLoaded, setIsLoaded] = useState(false);
   
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -26,10 +26,12 @@ export const ParallaxImage = ({ src, alt, className = "" }: ParallaxImageProps) 
         style={{ y, scale, opacity }}
         className="overflow-hidden"
       >
-        <LazyImage
+        <img
           src={src}
           alt={alt}
-          className={className}
+          className={`${className} transition-all duration-700 ${isLoaded ? "opacity-100" : "opacity-0"}`}
+          onLoad={() => setIsLoaded(true)}
+          loading="lazy"
         />
       </motion.div>
     </div>
