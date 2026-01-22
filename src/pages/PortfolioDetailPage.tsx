@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import { Badge } from "@/components/ui/badge";
 import { ParallaxImage } from "@/components/ParallaxImage";
 import { ScrollAnimation } from "@/components/ScrollAnimation";
+import { Lightbox } from "@/components/Lightbox";
 
 // Priya & Rahul images
 import priya1 from "@/assets/portfolio/priyaAndRahul/image-1.jpg";
@@ -86,13 +87,18 @@ import deepika2 from "@/assets/portfolio/deepikaAndRanveer/image-2.jpg";
 import priyanka1 from "@/assets/portfolio/priyankaAndNick/image-1.jpg";
 import priyanka2 from "@/assets/portfolio/priyankaAndNick/image-2.jpg";
 
+const INITIAL_IMAGES = 10;
 const IMAGES_PER_LOAD = 5;
 
 const PortfolioDetailPage = () => {
   const { id } = useParams();
-  const [visibleCount, setVisibleCount] = useState(IMAGES_PER_LOAD);
+  const [visibleCount, setVisibleCount] = useState(INITIAL_IMAGES);
   const [isLoading, setIsLoading] = useState(false);
   const loaderRef = useRef<HTMLDivElement>(null);
+  
+  // Lightbox state
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
 
   const portfolioData: Record<string, any> = {
     "priya-rahul": {
@@ -199,8 +205,29 @@ const PortfolioDetailPage = () => {
 
   // Reset visible count when portfolio changes
   useEffect(() => {
-    setVisibleCount(IMAGES_PER_LOAD);
+    setVisibleCount(INITIAL_IMAGES);
+    setLightboxOpen(false);
   }, [id]);
+
+  // Lightbox handlers
+  const openLightbox = (index: number) => {
+    setLightboxIndex(index);
+    setLightboxOpen(true);
+  };
+
+  const closeLightbox = () => setLightboxOpen(false);
+
+  const goToNext = () => {
+    if (lightboxIndex < allImages.length - 1) {
+      setLightboxIndex(lightboxIndex + 1);
+    }
+  };
+
+  const goToPrevious = () => {
+    if (lightboxIndex > 0) {
+      setLightboxIndex(lightboxIndex - 1);
+    }
+  };
 
   // Infinite scroll handler
   const loadMore = useCallback(() => {
@@ -309,12 +336,17 @@ const PortfolioDetailPage = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col items-center space-y-16">
             {visibleImages.map((image, index) => (
-              <ParallaxImage
+              <div
                 key={index}
-                src={image}
-                alt={`${portfolio.title} - Photo ${index + 1}`}
-                className="w-auto h-auto max-w-full max-h-[90vh] object-contain"
-              />
+                onClick={() => openLightbox(index)}
+                className="cursor-pointer transition-transform hover:scale-[1.01]"
+              >
+                <ParallaxImage
+                  src={image}
+                  alt={`${portfolio.title} - Photo ${index + 1}`}
+                  className="w-auto h-auto max-w-full max-h-[90vh] object-contain"
+                />
+              </div>
             ))}
           </div>
           
@@ -368,6 +400,16 @@ const PortfolioDetailPage = () => {
       </section>
 
       <Footer />
+
+      {/* Lightbox */}
+      <Lightbox
+        images={allImages}
+        currentIndex={lightboxIndex}
+        isOpen={lightboxOpen}
+        onClose={closeLightbox}
+        onNext={goToNext}
+        onPrevious={goToPrevious}
+      />
     </div>
   );
 };
