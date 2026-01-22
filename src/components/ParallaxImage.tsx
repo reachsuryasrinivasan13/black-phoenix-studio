@@ -27,27 +27,38 @@ export const ParallaxImage = ({ src, alt, className = "" }: ParallaxImageProps) 
     setIsLoaded(true);
   };
 
-  // Determine sizing classes based on orientation
-  const getSizeClasses = () => {
-    if (isPortrait === null) return "max-w-full max-h-[90vh]";
-    if (isPortrait) {
-      // Portrait: taller, limit width more
-      return "max-w-[50%] md:max-w-[40%] lg:max-w-[35%] max-h-[90vh]";
+  // Determine sizing styles based on orientation with min/max constraints
+  const getSizeStyles = (): React.CSSProperties => {
+    if (isPortrait === null) {
+      return { maxWidth: "100%", maxHeight: "90vh" };
     }
-    // Landscape: wider, use more horizontal space
-    return "max-w-full md:max-w-[85%] lg:max-w-[80%] max-h-[75vh]";
+    if (isPortrait) {
+      // Portrait: narrower with min/max width constraints
+      return {
+        minWidth: "280px",
+        maxWidth: "min(450px, 50vw)",
+        maxHeight: "85vh",
+      };
+    }
+    // Landscape: wider with min/max width constraints
+    return {
+      minWidth: "320px",
+      maxWidth: "min(900px, 85vw)",
+      maxHeight: "70vh",
+    };
   };
 
   return (
-    <div ref={ref} className="w-full flex justify-center overflow-hidden">
+    <div ref={ref} className="w-full flex justify-center items-center overflow-hidden">
       <motion.div
         style={{ y, scale, opacity }}
-        className="overflow-hidden"
+        className="overflow-hidden flex justify-center"
       >
         <img
           src={src}
           alt={alt}
-          className={`w-auto h-auto object-contain transition-all duration-700 ${getSizeClasses()} ${isLoaded ? "opacity-100" : "opacity-0"} ${className}`}
+          style={getSizeStyles()}
+          className={`w-auto h-auto object-contain transition-all duration-700 ${isLoaded ? "opacity-100" : "opacity-0"} ${className}`}
           onLoad={handleImageLoad}
           loading="lazy"
         />
